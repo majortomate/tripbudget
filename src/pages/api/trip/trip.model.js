@@ -2,6 +2,11 @@ import { Schema, model, models } from 'mongoose';
 
 const TripSchema = new Schema(
   {
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
     tripName: {
       type: String,
       required: true,
@@ -24,6 +29,12 @@ const TripSchema = new Schema(
       type: Boolean,
       default: true,
     },
+    destinations: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Destination',
+      },
+    ],
   },
   {
     timestamps: true,
