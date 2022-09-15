@@ -1,13 +1,13 @@
 /* eslint-disable import/no-anonymous-default-export */
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
-import { findUserByEmail, registerUser } from '../../user/user.service';
-import { sendMailSendGrid } from '../../../utils/mail';
+import { findUserByEmail, registerUser } from '../../../../server/user/user.service';
+import { sendMailSendGrid } from '../../../../server/config/mail';
 
-import connectDb from '../../../utils/database';
+import connectDb from '../../../../server/config/database';
 
 export default async (req, res) => {
-  connectDb();
+  await connectDb();
   const userData = req.body;
   const { email, password } = req.body;
   const userFound = await findUserByEmail(email);

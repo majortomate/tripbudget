@@ -5,12 +5,12 @@
 /* eslint-disable no-underscore-dangle */
 import bcrypt from 'bcryptjs';
 import { serialize } from 'cookie';
-import User from '../../user/user.model';
-import { signToken } from './auth.service';
-import connectDb from '../../../utils/database';
+import User from '../../../../server/user/user.model';
+import { signToken } from '../../../../server/auth/local/auth.service';
+import connectDb from '../../../../server/config/database';
 
 export default async (req, res) => {
-  connectDb();
+  await connectDb();
 
   const { body } = req;
   const { email, password } = body;

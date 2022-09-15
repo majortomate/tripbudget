@@ -1,10 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
-import connectDb from '../../utils/database';
-import Destination from './destination.model';
-
-connectDb();
+import connectDb from '../../../server/config/database';
+import Destination from '../../../server/destination/destination.model';
 
 export default async (req, res) => {
+  await connectDb();
   try {
     const destinations = await Destination.find({}).populate('trip');
     return res.status(200).json(destinations);
