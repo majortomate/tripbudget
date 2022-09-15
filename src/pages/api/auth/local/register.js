@@ -4,7 +4,10 @@ import crypto from 'crypto';
 import { findUserByEmail, registerUser } from '../../user/user.service';
 import { sendMailSendGrid } from '../../../utils/mail';
 
+import connectDb from '../../../utils/database';
+
 export default async (req, res) => {
+  connectDb();
   const userData = req.body;
   const { email, password } = req.body;
   const userFound = await findUserByEmail(email);
@@ -35,7 +38,7 @@ export default async (req, res) => {
       template_id: 'd-67cc7f78c54441a7a5e94c6986640003', // template id
       dynamic_template_data: {
         firstName: user.firstName,
-        url: `http://localhost:3000/api/auth/local/verify/${emailHash}`,
+        url: `http://localhost:3000/verify/${emailHash}`,
       },
     };
 

@@ -1,40 +1,34 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable consistent-return */
 /* eslint-disable no-case-declarations */
 /* eslint-disable import/no-anonymous-default-export */
 /* eslint-disable no-underscore-dangle */
+import bcrypt from 'bcryptjs';
+import { serialize } from 'cookie';
 import User from '../../user/user.model';
 import { signToken } from './auth.service';
+import connectDb from '../../../utils/database';
 
 export default async (req, res) => {
-  const { method, body } = req;
-  switch (method) {
-    case 'POST':
-      const { email, password } = body;
-      if (!email || !password) {
-        return res.status(400).json({ failed: 'All fields are required' });
-      }
-      const user = await User.findOne({ email });
-      if (!user) {
-        return res.status(404).json({ message: 'Wrong credentials' });
-      }
-      if (user.password !== password) {
-        return res.status(404).json({ message: 'Wrong password' });
-      }
-      const token = signToken({ email: user.email });
-      return res.status(200).json({ success: 'Youre now logged in', token });
+  connectDb();
 
-    case 'GET':
-      return res.status(200).json('in Login');
-    default:
-      break;
+  const { body } = req;
+  const { email, password } = body;
+
+  if (!email || !password) {
+    return res.status(400).json({ failed: 'All fields are required' });
   }
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res.status(404).json({ message: 'Wrong credentials' });
+  }
+  const matchPassword = await bcrypt.compare(password, user.password);
+  if (!matchPassword) {
+    return res.status(404).json({ message: 'Wrong password' });
+  }
+  const token = signToken({ email: user.email });
+  const serialized = serialize('tokencito', token);
+  res.setHeader('Set-Cookie', serialized);
+
+  res.status(200).json({ success: 'Youre now logged in', token });
 };
-
-/* const getAllUsersHandler = async (req, res) => {
-  const users = await User.find({}).populate('favs');
-
-  if (!users) {
-    res.status(404).json('error');
-  }
-  res.status(200).json(users);
-}; */

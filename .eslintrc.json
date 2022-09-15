@@ -20,5 +20,8 @@
         "react"
     ],
     "rules": {
+      "no-underscore-dangle": "off",
+      "max-len": "off",
+      "import/no-anonymous-default-export": "off"
     }
 }
