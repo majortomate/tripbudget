@@ -1,4 +1,3 @@
-/* eslint-disable consistent-return */
 import connectDb from '../../../server/config/database';
 import { getSingleTrip, updateTrip, deleteTrip } from '../../../server/trip/trip.service';
 
