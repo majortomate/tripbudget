@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import { Schema, model, models } from 'mongoose';
 
 const UserSchema = new Schema(
@@ -63,11 +64,14 @@ const UserSchema = new Schema(
           ref: 'Trip',
         },
       ],
+    isActive: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamps: true,
     versionKey: false,
   },
 );
-
 export default models.User || model('User', UserSchema);

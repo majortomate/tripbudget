@@ -1,4 +1,18 @@
-/* eslint-disable import/no-anonymous-default-export */
+/* eslint-disable no-unused-vars */
+/* eslint-disable consistent-return */
+/* eslint-disable no-case-declarations */
+import { getSingleTrip } from './trip.service';
+
 export default async (req, res) => {
-  res.json('all good');
+  const { method, body, params } = req;
+  switch (method) {
+    case 'GET':
+      const tripFound = await getSingleTrip(params.id);
+      return res.status(200).json(tripFound);
+    case 'PATCH':
+    case 'DELETE':
+      break;
+    default:
+      return [];
+  }
 };

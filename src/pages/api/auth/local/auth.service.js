@@ -1,3 +1,4 @@
+import { jwtVerify } from 'jose';
 import jwt from 'jsonwebtoken';
 import User from '../../user/user.model';
 
@@ -12,14 +13,14 @@ export const signToken = (payload) => {
 
 export const verifyToken = async (token) => {
   try {
-    const payload = await jwt.verify(token, process.env.TOKEN);
+    const payload = await jwtVerify(token, process.env.TOKEN);
     return payload;
   } catch (error) {
     return null;
   }
 };
 
-export const isAuthenticated = async (req, res, next) => {
+export const isAuthenticated = async (req, res) => {
   const authHeader = req.headers?.authorization;
 
   if (!authHeader) {
@@ -42,7 +43,7 @@ export const isAuthenticated = async (req, res, next) => {
   if (!user) {
     return res.status(404).json({ message: 'User not found' });
   }
+  req.user = user;
 
-  next();
   return true;
 };

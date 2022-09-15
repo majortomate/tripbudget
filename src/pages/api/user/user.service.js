@@ -1,6 +1,6 @@
 import User from './user.model';
 
-export const getSingleUser = (id) => User.findById(id);
+export const getSingleUser = (id) => User.findById(id).populate('trips');
 
 export const findUserByEmail = (email) => User.findOne({ email });
 
