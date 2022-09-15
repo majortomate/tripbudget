@@ -1,6 +1,7 @@
 import Trip from './trip.model';
+import Destination from '../destination/destination.model';
 
-export const getSingleTrip = (id) => Trip.findById(id).populate('trips');
+export const getSingleTrip = (id) => Trip.findById(id).populate({ path: 'destinations', model: Destination });
 
 export const findOneTrip = (query) => Trip.findOne(query);
 
