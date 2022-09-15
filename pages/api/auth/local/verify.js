@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { findOneUser } from '../../user/user.service';
-import { signToken } from './auth.service';
+import { findOneUser } from '../../../../server/user/user.service';
+import { signToken } from '../../../../server/auth/local/auth.service';
 
 export default async (req, res) => {
   const { token } = req.params;

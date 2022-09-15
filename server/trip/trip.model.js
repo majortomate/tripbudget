@@ -33,6 +33,7 @@ const TripSchema = new Schema(
       {
         type: Schema.Types.ObjectId,
         ref: 'Destination',
+        require: true,
       },
     ],
   },

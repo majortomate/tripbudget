@@ -1,14 +1,13 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable import/no-anonymous-default-export */
-import connectDb from '../../utils/database';
-import Destination from './destination.model';
-import { getSingleUser } from '../user/user.service';
-import { updateTrip } from '../trip/trip.service';
-
-connectDb();
+import connectDb from '../../../server/config/database';
+import Destination from '../../../server/destination/destination.model';
+import { getSingleUser } from '../../../server/user/user.service';
+import { updateTrip } from '../../../server/trip/trip.service';
 
 export default async (req, res) => {
+  await connectDb();
   const { body } = req;
   const id = '6322387b7d615d2fa6309db0';
 

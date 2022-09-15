@@ -39,6 +39,7 @@ const DestinationSchema = new Schema(
     trip: {
       type: Schema.Types.ObjectId,
       ref: 'Trip',
+      require: true,
     },
   },
   {
