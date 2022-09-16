@@ -1,8 +1,3 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable consistent-return */
-/* eslint-disable no-case-declarations */
-/* eslint-disable import/no-anonymous-default-export */
-/* eslint-disable no-underscore-dangle */
 import bcrypt from 'bcryptjs';
 import { serialize } from 'cookie';
 import User from '../../../../server/user/user.model';
