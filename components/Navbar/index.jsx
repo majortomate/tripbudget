@@ -1,4 +1,6 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-props-no-spreading */
+import NextLink from 'next/link';
 import {
   Box,
   Flex,
@@ -57,6 +59,7 @@ export default function Navbar() {
         px={{ base: 4 }}
         align="center"
         justify="center"
+        max-width="1536px"
       >
         <Flex
           flex={{ base: 1, md: 'auto' }}
@@ -74,7 +77,11 @@ export default function Navbar() {
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
           <Box p={2}>
-            <Image src="https://res.cloudinary.com/knowhere/image/upload/v1663341394/static/logo-tripbudget-text-white_yfkmkg.svg" alt="knowhere logo" width={220} />
+            <NextLink href="/" passHref>
+              <Link>
+                <Image src="https://res.cloudinary.com/knowhere/image/upload/v1663341394/static/logo-tripbudget-text-white_yfkmkg.svg" alt="knowhere logo" width={220} />
+              </Link>
+            </NextLink>
           </Box>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
@@ -88,30 +95,34 @@ export default function Navbar() {
           direction="row"
           spacing={6}
         >
-          <Button
-            as="a"
-            fontSize="sm"
-            fontWeight={400}
-            variant="link"
-            color={linkColor}
-            _hover={linkHoverColor}
-            href="#"
-          >
-            Sign In
-          </Button>
-          <Button
-            display={{ base: 'none', md: 'inline-flex' }}
-            fontSize="sm"
-            fontWeight={600}
-            color="black"
-            bg="#ffde5a"
-            href="#"
-            _hover={{
-              bg: '#f2cb2e',
-            }}
-          >
-            Sign Up
-          </Button>
+          <NextLink href="/login">
+            <Button
+              as="a"
+              fontSize="sm"
+              fontWeight={400}
+              variant="link"
+              color={linkColor}
+              _hover={linkHoverColor}
+              cursor="pointer"
+            >
+              Sign In
+            </Button>
+          </NextLink>
+          <NextLink href="/register">
+            <Button
+              display={{ base: 'none', md: 'inline-flex' }}
+              fontSize="sm"
+              fontWeight={600}
+              color="black"
+              bg="#ffde5a"
+              href="#"
+              _hover={{
+                bg: '#f2cb2e',
+              }}
+            >
+              Sign Up
+            </Button>
+          </NextLink>
         </Stack>
       </Flex>
 

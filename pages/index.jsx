@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
+/* eslint-disable react/no-unescaped-entities */
 import Head from 'next/head';
 import Hero from '../components/Hero';
 import styles from './styles/Home.module.css';

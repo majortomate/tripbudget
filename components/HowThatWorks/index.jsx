@@ -32,14 +32,14 @@ const steps = [
 
 export default function HowThatWorks() {
   return (
-    <div className="bg-[url('/images/trip-vector.png')] bg-hero bg-no-repeat bg-contain bg-bottom sm:pb-80 pb-20 pt-32 sm:bg-contain md:bg-contain lg:bg-cover xl:bg-contain" id="howItWorks">
+    <div className="bg-[url('/images/trip-vector.png')] dark:bg-gray-800 bg-hero bg-no-repeat bg-contain bg-bottom sm:pb-80 pb-20 pt-32 sm:bg-contain md:bg-contain lg:bg-cover xl:bg-contain" id="howItWorks">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="lg:text-center">
           <h2 className="text-xl font-bold text-tripbudget-yellow">How it works</h2>
-          <p className="mt-2 text-4xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl">
+          <p className="mt-2 text-4xl font-bold leading-8 tracking-tight text-gray-900 sm:text-4xl dark:text-white">
             Budget your trip is this simple
           </p>
-          <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+          <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto dark:text-gray-300">
             Forget about taking notes in a tiny notebook. Just start using our wonderful application, from creating your first trip until adding as many destinations, costs and dates you want.
           </p>
         </div>
@@ -49,12 +49,12 @@ export default function HowThatWorks() {
             {steps.map((feature) => (
               <div key={feature.name} className="relative">
                 <dt>
-                  <div className="absolute flex h-12 w-12 items-center justify-center rounded-md bg-knowhere-dark-blue text-white">
-                    <feature.icon className="h-6 w-6" aria-hidden="true" />
+                  <div className="absolute flex h-12 w-12 items-center justify-center rounded-md bg-knowhere-dark-blue text-white dark:bg-tripbudget-yellow">
+                    <feature.icon className="h-6 w-6 dark:text-knowhere-dark-blue" aria-hidden="true" />
                   </div>
-                  <h5 className="ml-16 text-2xl font-bold leading-6 text-gray-900">{feature.name}</h5>
+                  <h5 className="ml-16 text-2xl font-bold leading-6 text-gray-900 dark:text-white">{feature.name}</h5>
                 </dt>
-                <dd className="mt-2 ml-16 text-base text-gray-500">{feature.description}</dd>
+                <dd className="mt-2 ml-16 text-base text-gray-500 dark:text-gray-300">{feature.description}</dd>
               </div>
             ))}
           </dl>
