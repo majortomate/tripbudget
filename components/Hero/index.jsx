@@ -4,14 +4,14 @@
 /* This example requires Tailwind CSS v2.0+ */
 export default function Hero() {
   return (
-    <div className="relative overflow-hidden" id="home">
+    <div className="relative overflow-hidden dark:bg-gray-800" id="home">
       <div className="pt-16 pb-80 sm:pt-24 sm:pb-40 lg:pt-64 lg:pb-64">
         <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
           <div className="sm:max-w-lg">
-            <h1 className="font text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            <h1 className="font text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-white">
               Start bugdeting your trip like a pro
             </h1>
-            <p className="mt-4 text-xl text-gray-500">
+            <p className="mt-4 text-xl text-gray-500 dark:text-gray-300">
               A trip could be way expensive if you don't know the costs or at least how much in reality you will like to spend. Be the master of your trip expenses and start budgeting your trip now.
             </p>
           </div>
@@ -85,7 +85,7 @@ export default function Hero() {
 
               <a
                 href="#"
-                className="inline-block rounded-md border border-transparent bg-knowhere-dark-blue py-3 px-8 text-center font-medium text-white hover:bg-black"
+                className="inline-block rounded-md border border-transparent bg-knowhere-dark-blue py-3 px-8 text-center font-medium dark:hover:text-white dark:text-black text-white hover:bg-black dark:bg-tripbudget-yellow"
               >
                 Start Now
               </a>
