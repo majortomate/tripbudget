@@ -24,6 +24,9 @@
       "max-len": "off",
       "import/no-anonymous-default-export": "off",
       "no-case-declarations": "off",
-      "consistent-return": "off"
+      "consistent-return": "off",
+      "react/no-unescaped-entities": "off",
+      "jsx-a11y/label-has-associated-control": "off",
+      "@next/next/no-img-element": "off"
     }
 }
