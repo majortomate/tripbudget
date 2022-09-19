@@ -22,5 +22,7 @@ export default async (req, res) => {
   }
   const token = signToken({ email: user.email });
 
-  return res.status(200).json({ success: 'Youre now logged in', token, profile: user.profile });
+  return res.status(200).json({
+    success: 'Youre now logged in', token, profile: user.profile, isLoggedIn: true,
+  });
 };

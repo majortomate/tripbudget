@@ -7,7 +7,7 @@ const register = (username, email, password) => axios.post(`${process.env.REACT_
   email,
   password,
 });
-const login = (email, password) => axios
+export const login = (email, password) => axios
   .post('http://localhost:3000/api/auth/local/login', {
     email,
     password,

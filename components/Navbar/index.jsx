@@ -25,6 +25,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
+import { selectUserState } from '../../features/auth/authSlice';
 import LoggedInAvatar from '../LoggedInAvatar';
 
 const NAV_ITEMS = [
@@ -47,7 +48,7 @@ const NAV_ITEMS = [
 ];
 
 export default function Navbar() {
-  const { isLoggedIn } = useSelector((state) => state);
+  const userState = useSelector(selectUserState);
   const { isOpen, onToggle } = useDisclosure();
   const linkColor = useColorModeValue('white', 'gray.200');
   const linkHoverColor = useColorModeValue('#FFDE5A', 'white');
@@ -98,7 +99,7 @@ export default function Navbar() {
           direction="row"
           spacing={6}
         >
-          {isLoggedIn
+          {userState
             ? <LoggedInAvatar />
             : (
               <>
