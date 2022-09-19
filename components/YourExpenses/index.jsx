@@ -15,7 +15,7 @@ function YourExpenses() {
           </p>
         </div>
         <div className="grid grid-cols-1 gap-6 md:grid-cols-1 justify-items-center">
-          <h2 className="bold text-3xl">Section Under Construction 👷</h2>
+          <h2 className="bold text-3xl text-black dark:text-gray-300">Section Under Construction 👷</h2>
           <img src="https://res.cloudinary.com/knowhere/image/upload/v1663520140/static/under-construction_mqoufz.webp" alt="under construction" className="w-96 h-auto" />
         </div>
       </div>

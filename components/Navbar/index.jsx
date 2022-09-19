@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-props-no-spreading */
+import { useSelector } from 'react-redux';
 import NextLink from 'next/link';
 import {
   Box,
@@ -24,6 +25,8 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
+import { selectUserState } from '../../features/auth/authSlice';
+import LoggedInAvatar from '../LoggedInAvatar';
 
 const NAV_ITEMS = [
   {
@@ -45,6 +48,7 @@ const NAV_ITEMS = [
 ];
 
 export default function Navbar() {
+  const userState = useSelector(selectUserState);
   const { isOpen, onToggle } = useDisclosure();
   const linkColor = useColorModeValue('white', 'gray.200');
   const linkHoverColor = useColorModeValue('#FFDE5A', 'white');
@@ -95,34 +99,42 @@ export default function Navbar() {
           direction="row"
           spacing={6}
         >
-          <NextLink href="/login">
-            <Button
-              as="a"
-              fontSize="sm"
-              fontWeight={400}
-              variant="link"
-              color={linkColor}
-              _hover={linkHoverColor}
-              cursor="pointer"
-            >
-              Sign In
-            </Button>
-          </NextLink>
-          <NextLink href="/register">
-            <Button
-              display={{ base: 'none', md: 'inline-flex' }}
-              fontSize="sm"
-              fontWeight={600}
-              color="black"
-              bg="#ffde5a"
-              href="#"
-              _hover={{
-                bg: '#f2cb2e',
-              }}
-            >
-              Sign Up
-            </Button>
-          </NextLink>
+          {userState
+            ? <LoggedInAvatar />
+            : (
+              <>
+                <NextLink href="/login">
+                  <Button
+                    as="a"
+                    fontSize="sm"
+                    fontWeight={400}
+                    variant="link"
+                    color={linkColor}
+                    _hover={linkHoverColor}
+                    cursor="pointer"
+                  >
+                    Sign In
+                  </Button>
+                </NextLink>
+                <NextLink href="/register">
+                  <Button
+                    display={{ base: 'none', md: 'inline-flex' }}
+                    fontSize="sm"
+                    fontWeight={600}
+                    color="black"
+                    bg="#ffde5a"
+                    href="#"
+                    _hover={{
+                      bg: '#f2cb2e',
+                    }}
+                  >
+                    Sign Up
+                  </Button>
+                </NextLink>
+
+              </>
+            )}
+
         </Stack>
       </Flex>
 

@@ -1,6 +1,37 @@
-import { jwtVerify } from 'jose';
+import axios from 'axios';
 import jwt from 'jsonwebtoken';
-import User from '../../user/user.model';
+// import User from '../../user/user.model';
+
+const register = (username, email, password) => axios.post(`${process.env.REACT_APP_BACK_PROD_BASE_URL}/api/auth/register`, {
+  username,
+  email,
+  password,
+});
+export const login = (email, password) => axios
+  .post('http://localhost:3000/api/auth/local/login', {
+    email,
+    password,
+  })
+  .then((response) => {
+    if (response) {
+      localStorage.setItem('user', JSON.stringify(response.data));
+    }
+    return response.data;
+  });
+const logout = () => {
+  localStorage.removeItem('user');
+};
+
+export async function verify(token) {
+  const response = await fetch(`${process.env.REACT_APP_BACK_PROD_BASE_URL}/api/auth/verify-account/${token}`);
+  return response.json();
+}
+
+export default {
+  register,
+  login,
+  logout,
+};
 
 export const signToken = (payload) => {
   const token = jwt.sign(
@@ -11,9 +42,9 @@ export const signToken = (payload) => {
   return token;
 };
 
-export const verifyToken = async (token) => {
+/* export const verifyToken = async (token) => {
   try {
-    const payload = await jwtVerify(token, process.env.TOKEN);
+    const payload = await jwt(token, process.env.TOKEN);
     return payload;
   } catch (error) {
     return null;
@@ -46,4 +77,4 @@ export const isAuthenticated = async (req, res) => {
   req.user = user;
 
   return true;
-};
+}; */

@@ -40,7 +40,7 @@ export default function HowThatWorks() {
             Budget your trip is this simple
           </p>
           <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto dark:text-gray-300">
-            Forget about taking notes in a tiny notebook. Just start using our wonderful application, from creating your first trip until adding as many destinations, costs and dates you want.
+            Forget about taking notes in a tiny notebook. Just start using our wonderful application, from creating your first trip to adding as many destinations, costs and dates you want.
           </p>
         </div>
 
