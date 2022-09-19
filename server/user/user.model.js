@@ -75,4 +75,17 @@ const UserSchema = new Schema(
     versionKey: false,
   },
 );
+
+UserSchema.virtual('profile').get(function profile() {
+  const {
+    _id, firstName, username, email,
+  } = this;
+
+  return {
+    _id,
+    firstName,
+    username,
+    email,
+  };
+});
 export default models.User || model('User', UserSchema);

@@ -2,7 +2,7 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
-
+import Head from 'next/head';
 import { useState } from 'react';
 import TravelPhotos from '../components/TravelPhotos';
 import YourExpenses from '../components/YourExpenses';
@@ -92,6 +92,11 @@ function Profile() {
 
   return (
     <div className="dark:bg-gray-900">
+      <Head>
+        <title>Profile | TripBudget - Budget your trip like a pro</title>
+        <meta name="description" content="Profile page" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="flex md:flex-row  flex-col justify-between py-12 mx-auto max-w-screen-2xl h-full">
         <aside className="w-64" aria-label="Sidebar">
           <div className="overflow-y-auto py-4 px-3 bg-gray-100 rounded-md shadow dark:bg-gray-800">

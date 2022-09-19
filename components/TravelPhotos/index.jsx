@@ -82,7 +82,7 @@ function TravelPhotos() {
               {openDropdown && <DropdownOptions />}
 
             </div>
-            <div className="flex flex-col items-center pb-10 relative">
+            <div className="flex flex-col items-center pb-10 relative dark:bg-gray-700">
               <img className="rounded-t-lg" src="https://res.cloudinary.com/knowhere/image/upload/v1663521735/static/paris_kxss1w.jpg" alt="places ive been" />
               <div className="flex flex-row justify-center items-center mt-6">
                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-map-pin mb-auto" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" stroke-linejoin="round">
