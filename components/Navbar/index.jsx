@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-props-no-spreading */
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import NextLink from 'next/link';
 import {
@@ -48,10 +50,20 @@ const NAV_ITEMS = [
 ];
 
 export default function Navbar() {
-  const userState = useSelector(selectUserState);
   const { isOpen, onToggle } = useDisclosure();
   const linkColor = useColorModeValue('white', 'gray.200');
   const linkHoverColor = useColorModeValue('#FFDE5A', 'white');
+  const [profile, setProfile] = useState(null);
+  const currentUser = useSelector((state) => state.auth?.user?.profile);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+    // Perform localStorage action
+      const item = localStorage.getItem('user');
+      const converted = JSON.parse(item);
+      setProfile(converted);
+    }
+  }, []);
 
   return (
     <Box>
@@ -99,7 +111,7 @@ export default function Navbar() {
           direction="row"
           spacing={6}
         >
-          {userState
+          {currentUser || profile
             ? <LoggedInAvatar />
             : (
               <>
