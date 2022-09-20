@@ -2,7 +2,9 @@ import axios from 'axios';
 import jwt from 'jsonwebtoken';
 // import User from '../../user/user.model';
 
-const register = (username, email, password) => axios.post(`${process.env.REACT_APP_BACK_PROD_BASE_URL}/api/auth/register`, {
+export const register = (firstName, lastName, username, email, password) => axios.post('http://localhost:3000/api/auth/local/register', {
+  firstName,
+  lastName,
   username,
   email,
   password,
@@ -22,15 +24,9 @@ export const logout = () => {
   localStorage.removeItem('user');
 };
 
-export async function verify(token) {
-  const response = await fetch(`${process.env.REACT_APP_BACK_PROD_BASE_URL}/api/auth/verify-account/${token}`);
+export const verify = async (token) => {
+  const response = await fetch(`http://localhost:3000/api/auth/local/verify/${token}`);
   return response.json();
-}
-
-export default {
-  register,
-  login,
-  logout,
 };
 
 export const signToken = (payload) => {
