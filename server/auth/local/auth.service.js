@@ -18,7 +18,7 @@ export const login = (email, password) => axios
     }
     return response.data;
   });
-const logout = () => {
+export const logout = () => {
   localStorage.removeItem('user');
 };
 
