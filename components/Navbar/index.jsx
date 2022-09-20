@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable react/jsx-props-no-spreading */
-import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 import NextLink from 'next/link';
 import {
   Box,
@@ -25,7 +25,6 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
-import { selectUserState } from '../../features/auth/authSlice';
 import LoggedInAvatar from '../LoggedInAvatar';
 
 const NAV_ITEMS = [
@@ -48,10 +47,21 @@ const NAV_ITEMS = [
 ];
 
 export default function Navbar() {
-  const userState = useSelector(selectUserState);
   const { isOpen, onToggle } = useDisclosure();
   const linkColor = useColorModeValue('white', 'gray.200');
   const linkHoverColor = useColorModeValue('#FFDE5A', 'white');
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+    // Perform localStorage action
+      const item = localStorage.getItem('user');
+      if (item) {
+        const converted = JSON.parse(item);
+        setProfile(converted.profile);
+      }
+    }
+  }, []);
 
   return (
     <Box>
@@ -99,7 +109,7 @@ export default function Navbar() {
           direction="row"
           spacing={6}
         >
-          {userState
+          {profile
             ? <LoggedInAvatar />
             : (
               <>
