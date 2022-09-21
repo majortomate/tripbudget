@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Head from 'next/head';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { wrapper } from '../store';
 import { login } from '../server/auth/local/auth.service';
 import { setLoginState, selectUserState } from '../features/auth/authSlice';
 

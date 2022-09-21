@@ -8,12 +8,8 @@ body {
 
 html {
   scroll-behavior: smooth;
-  height: 100% !important;
 }
-body {
-  min-height: 100% !important;
-}
-body { min-height: 100vh; }
+
 a {
   color: inherit;
   text-decoration: none;
@@ -34,6 +30,9 @@ a {
 }
 .active-tab{
   display: block;
+}
+input::-webkit-inner-spin-button{
+    opacity:1; 
 }
 
 @tailwind base;

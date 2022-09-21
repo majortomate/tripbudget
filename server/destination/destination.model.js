@@ -24,7 +24,7 @@ const DestinationSchema = new Schema(
     transportationDailyBudget: {
       type: Number,
     },
-    transferBudget: {
+    localTransportationBudget: {
       type: Number,
     },
     souvenirsDailyBudget: {

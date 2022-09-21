@@ -1,23 +1,57 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable @next/next/no-img-element */
-import React from 'react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import CreateDestination from '../CreateDestination';
+import DropdownOptions from '../DropdownOptions';
+import setTime from '../../pages/services/toLocalString';
+import { selectDestinationState } from '../../features/destination/destinationSlice';
 
-function TripCard() {
+function TripCard({ currentTrip }) {
+  const [openDropdown, setOpenDropdown] = useState(false);
+  const currentDestinations = useSelector(selectDestinationState);
+
+  const handleClick = () => {
+    setOpenDropdown(!openDropdown);
+  };
   return (
+    <div className="w-full bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+      <div className="flex justify-end px-4 pt-4 relative">
+        <button onClick={handleClick} id="dropdownButton" className="inline-block text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-1.5" type="button">
+          <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z" /></svg>
+        </button>
+        {openDropdown && <DropdownOptions />}
 
-    <div className="max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-700 dark:border-gray-700 mx-auto">
-      <a href="#">
-        <img className="rounded-t-lg" src="https://res.cloudinary.com/knowhere/image/upload/v1663301405/cld-sample-2.jpg" alt="" />
-      </a>
-      <div className="p-5">
-        <a href="#">
-          <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Noteworthy technology acquisitions 2021</h5>
-        </a>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.</p>
-        <a href="#" className="inline-flex items-center py-2 px-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-          Read more
-          <svg aria-hidden="true" className="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
-        </a>
+      </div>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-4 p-5 relative">
+        <div className="col-span-1">
+          <h3 className="mb-1 text-lg font-medium text-gray-900 dark:text-white">
+            Trip Name:
+            {' '}
+            <span className="text-lg font-medium text-gray-500 dark:text-gray-400">{currentTrip?.tripName}</span>
+          </h3>
+          <h3 className="text-lg font-medium text-gray-900 dark:text-gray-400">
+            Trip Dates:
+            {' '}
+            <span className="text-gray-500">
+              {' '}
+              {`From ${setTime(currentTrip?.tripDateFrom)} to ${setTime(currentTrip?.tripDateTo)}`}
+            </span>
+          </h3>
+          <h3 className="text-lg font-medium text-gray-900 dark:text-gray-400">Total daily for this trip so far: </h3>
+        </div>
+        <div className="col-span-3 w-full bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 p-5">
+          <CreateDestination />
+        </div>
+        {currentTrip?.destinations.length > 0
+          ? (
+            <div>
+              <button className="block text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700" type="button">
+                Publish Trip
+              </button>
+            </div>
+          ) : null}
+
       </div>
     </div>
 
