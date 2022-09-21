@@ -91,7 +91,7 @@ function Profile() {
   };
 
   return (
-    <div className="dark:bg-gray-900">
+    <div className="dark:bg-gray-900 relative gap-6">
       <Head>
         <title>Profile | TripBudget - Budget your trip like a pro</title>
         <meta name="description" content="Profile page" />

@@ -16,7 +16,7 @@ export default async (req, res) => {
         return res.status(400).json({ msg: error.message });
       }
     case 'POST':
-      const id = '6322387b7d615d2fa6309db0';
+      const { id } = body;
 
       const user = await getSingleUser(id);
 
@@ -24,10 +24,10 @@ export default async (req, res) => {
         const newTrip = new Trip(body);
         const savedTrip = await newTrip.save();
 
-        const addToUser = await updateUser(user, {
+        await updateUser(user, {
           $push: { trips: savedTrip._id },
         });
-        return res.status(201).json(addToUser);
+        return res.status(201).json({ success: 'You just create a trip', savedTrip });
       } catch (error) {
         return res.status(400).json({ msg: error.message });
       }
