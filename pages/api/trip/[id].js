@@ -1,5 +1,6 @@
 import connectDb from '../../../server/config/database';
 import { getSingleTrip, updateTrip, deleteTrip } from '../../../server/trip/trip.service';
+import { deleteDestination } from '../../../server/destination/destination.service';
 
 export default async (req, res) => {
   await connectDb();
@@ -28,8 +29,11 @@ export default async (req, res) => {
       const tripToDelete = await getSingleTrip(query.id);
       if (!tripToDelete) return res.status(404).json({ failed: 'Couldnt find trip' });
       try {
-        const tripDeleted = await deleteTrip(tripToDelete);
-        return res.status(204).json(tripDeleted);
+        await Promise.all(
+          tripToDelete.destinations.map(async (destination) => deleteDestination(destination._id)),
+        );
+        await deleteTrip(tripToDelete);
+        return res.status(204).json(tripToDelete);
       } catch (error) {
         return res.status(500).json({ error: error.message });
       }

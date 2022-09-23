@@ -10,16 +10,14 @@ export default async (req, res) => {
   switch (method) {
     case 'GET':
       try {
-        const trips = await Trip.find({}).populate({ path: 'destinations', model: Destination });
-        return res.status(200).json(trips);
+        const trips = await Trip.find({}).sort([['createdAt', -1]]).populate({ path: 'destinations', model: Destination });
+        return res.status(200).json({ trips });
       } catch (error) {
         return res.status(400).json({ msg: error.message });
       }
     case 'POST':
       const { id } = body;
-
       const user = await getSingleUser(id);
-
       try {
         const newTrip = new Trip(body);
         const savedTrip = await newTrip.save();

@@ -17,24 +17,31 @@ const DestinationSchema = new Schema(
     },
     accomodationDailyBudget: {
       type: Number,
+      default: 0,
     },
     foodDailyBudget: {
       type: Number,
+      default: 0,
     },
     transportationDailyBudget: {
       type: Number,
+      default: 0,
     },
     localTransportationBudget: {
       type: Number,
+      default: 0,
     },
     souvenirsDailyBudget: {
       type: Number,
+      default: 0,
     },
     toursAndEntrancesDailyBudget: {
       type: Number,
+      default: 0,
     },
     othersDailyBudget: {
       type: Number,
+      default: 0,
     },
     trip: {
       type: Schema.Types.ObjectId,
@@ -47,5 +54,13 @@ const DestinationSchema = new Schema(
     versionKey: false,
   },
 );
+
+DestinationSchema.pre('save', (next) => {
+  DestinationSchema.aggregate([
+    { $match: { $text: 'Budget' } },
+    { $group: { _id: null, amount: { $sum: '$amount' } } },
+  ]);
+  next();
+});
 
 export default models.Destination || model('Destination', DestinationSchema);

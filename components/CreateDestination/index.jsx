@@ -44,6 +44,7 @@ function CreateDestination() {
     const response = await axios.post('http://localhost:3000/api/destination/', data);
     dispatch(setCreateDestinationState(response.data));
     setLoading(false);
+    setForm({});
     e.target.reset();
     setOpenModal(false);
   };
@@ -61,10 +62,10 @@ function CreateDestination() {
     <div id="defaultModal" className="overflow-y-auto overflow-x-hidden z-50 w-full h-modal md:h-full justify-center items-center">
       <div className="bg-white rounded-lg shadow dark:bg-gray-700 fixed top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4">
         <div className="flex justify-between items-start p-4 rounded-t border-b dark:border-gray-600">
-          <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+          <h3 className="text-xl font-semibold text-gray-900 dark:text-white mx-auto">
             Add a Destination
           </h3>
-          <button onClick={handleClick} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
+          <button onClick={handleClick} type="button" className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5  inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white">
             <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" /></svg>
             <span className="sr-only">Close modal</span>
           </button>
@@ -84,12 +85,12 @@ function CreateDestination() {
             <div className="flex justify-evenly col-span-1 lg:col-span-2 md:col-span-1">
               <div className="w-full">
                 <label htmlFor="stayDateFrom" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Stay Date (from)</label>
-                <input onChange={handleChange} name="stayDateFrom" id="tripDateFrom" type="date" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input" placeholder="Select date start" />
+                <input onChange={handleChange} name="stayDateFrom" id="tripDateFrom" type="date" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input" placeholder="Select date start" required />
               </div>
               <span className="mx-4 mt-8 text-gray-500">to</span>
               <div className="w-full">
                 <label htmlFor="stayDateTo" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Stay Date (to)</label>
-                <input onChange={handleChange} name="stayDateTo" type="date" id="tripDateTo" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input" placeholder="Select date end" />
+                <input onChange={handleChange} name="stayDateTo" type="date" id="tripDateTo" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input" placeholder="Select date end" required />
               </div>
             </div>
           </div>
@@ -151,12 +152,3 @@ function CreateDestination() {
 }
 
 export default CreateDestination;
-
-/*  <div className="mb-6 col-span-1">
-    <label htmlFor="groupSize" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Group Size</label>
-    <input onChange={handleChange} name="groupSize" type="text" list="groupSize" placeholder="Ex: Solo, couple or any quantity" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" />
-    <datalist onChange={handleChange} name="groupSize" id="groupSize">
-      <option value="Solo"> Solo</option>
-      <option value="Couple"> Couple</option>
-    </datalist>
-  </div>; */

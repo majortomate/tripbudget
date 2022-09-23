@@ -3,8 +3,9 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { setDeleteTripState, selectTripState } from '../../features/trip/tripSlice';
+import { setDeleteDestinationState } from '../../features/destination/destinationSlice';
 
-function DropdownOptions() {
+function DropdownOptions({ setHide }) {
   const [loading, setLoading] = useState(false);
   const currentTrip = useSelector(selectTripState);
   const dispatch = useDispatch();
@@ -17,6 +18,8 @@ function DropdownOptions() {
     setLoading(true);
     const response = await axios.delete(`http://localhost:3000/api/trip/${tripId}`);
     dispatch(setDeleteTripState(response.data));
+    dispatch(setDeleteDestinationState(response.data));
+    setHide(false);
     setLoading(false);
   };
   return (

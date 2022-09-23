@@ -75,19 +75,13 @@ function Login() {
     </div>
   );
 }
-/* export const getServerSideProps = wrapper.getServerSideProps(
-  (store) => async ({ params }) => {
-    // we can set the initial state from here
-    // we are setting to false but you can run your custom logic here
-    await store.dispatch(setLoginState());
-    console.log('State on server', store.getState());
-    return {
-      props: {
-        user: null,
-        isLoggedIn: false,
-      },
-    };
-  },
-); */
+// This gets called on every request
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const response = await fetch('http://localhost:3000/api/trip');
+  const data = await response.json();
+  // Pass data to the page via props
+  return { props: { data } };
+}
 
 export default Login;

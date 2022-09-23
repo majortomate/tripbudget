@@ -24,7 +24,7 @@ function TravelPhotos() {
         <div className="grid grid-cols-1 gap-6 md:grid-cols-7">
           <div className="mb-6 col-span-2">
             <label htmlFor="cityName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">City Name</label>
-            <input type="text" id="cityName" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required="" placeholder="Ex: Paris, France" />
+            <input type="text" id="cityName" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Ex: Paris, France" />
           </div>
           <div className="mb-6 col-span-2">
             <label htmlFor="description" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Short Description (optional)</label>
@@ -85,7 +85,7 @@ function TravelPhotos() {
             <div className="flex flex-col items-center pb-10 relative dark:bg-gray-700">
               <img className="rounded-t-lg" src="https://res.cloudinary.com/knowhere/image/upload/v1663521735/static/paris_kxss1w.jpg" alt="places ive been" />
               <div className="flex flex-row justify-center items-center mt-6">
-                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-map-pin mb-auto" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" stroke-linejoin="round">
+                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-map-pin mb-auto" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                   <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                   <circle cx="12" cy="11" r="3" />
                   <path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" />

@@ -10,7 +10,7 @@ export default async (req, res) => {
     case 'GET':
       try {
         const destinations = await Destination.find({}).populate('trip');
-        return res.status(200).json(destinations);
+        return res.status(200).json({ destinations });
       } catch (error) {
         return res.status(400).json({ msg: error.message });
       }

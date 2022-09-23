@@ -1,3 +1,4 @@
+/* eslint-disable no-return-assign */
 /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
 import { HYDRATE } from 'next-redux-wrapper';
@@ -17,14 +18,18 @@ export const destinationSlice = createSlice({
     },
     setGetSingleDestinationState: (state, action) => action.payload,
     setUpdateDestinationState: (state, action) => action.payload,
-    setDeleteDestinationState: (state, action) => action.payload,
-  },
-  extraReducers: {
-    [HYDRATE]: (state, action) => ({ ...state, ...action.payload.destination }),
+    setDeleteDestinationState: (state) => { state.destinations = []; },
+    setSingleDeleteDestinationState: (state, action) => {
+      const unDeleted = state.destinations.filter((destination) => destination._id !== action.payload);
+      state.destinations = unDeleted;
+    },
+    extraReducers: {
+      [HYDRATE]: (state, action) => ({ ...state, ...action.payload.destination }),
+    },
   },
 });
 export const {
-  setGetAllDestinationsState, setCreateDestinationState, setGetSingleDestinationState, setUpdateDestinationState, setDeleteDestinationState,
+  setGetAllDestinationsState, setCreateDestinationState, setGetSingleDestinationState, setUpdateDestinationState, setDeleteDestinationState, setSingleDeleteDestinationState,
 } = destinationSlice.actions;
 
 export const selectDestinationState = (state) => state.destination?.destinations;

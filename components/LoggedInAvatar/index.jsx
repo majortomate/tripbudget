@@ -18,6 +18,11 @@ function LoggedInAvatar() {
     setOpenDropdown(!openDropdown);
   };
   const handleLogout = async () => {
+    if (!currentUser) {
+      await logout();
+      dispatch(setLogoutState());
+      window.location.assign('/');
+    }
     await logout();
     dispatch(setLogoutState());
     router.push('/');
