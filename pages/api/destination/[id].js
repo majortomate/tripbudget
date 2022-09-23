@@ -26,10 +26,11 @@ export default async (req, res) => {
       }
     case 'DELETE':
       const destinationToDelete = await getSingleDestination(query.id);
+
       if (!destinationToDelete) return res.status(404).json({ failed: 'Couldnt find destination' });
       try {
         await deleteDestination(destinationToDelete);
-        return res.status(204).json({ success: 'destination deleted succesfully' });
+        return res.status(204).json(destinationToDelete);
       } catch (error) {
         return res.status(500).json({ error: error.message });
       }

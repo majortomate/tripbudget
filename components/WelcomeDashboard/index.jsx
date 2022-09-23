@@ -7,7 +7,7 @@ function WelcomeDashboard() {
       <div className="shadow overflow-hidden rounded md:rounded-lg space-y-6 bg-gray-50 px-4 py-5 sm:p-6 dark:bg-gray-800">
 
         <h1 className="font text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          Glad to see you here, Carlos!
+          Glad to see you here!
         </h1>
         <p className="mt-4 text-xl text-gray-500 dark:text-gray-300">
           This is your profile/dashboard page. Here you will be able to do many things, like, you know, BUDGET YOUR TRIP. Also, you can add your most stunning photos from your trips, add your daily expenses and more.

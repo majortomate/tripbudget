@@ -27,6 +27,7 @@
       "consistent-return": "off",
       "react/no-unescaped-entities": "off",
       "jsx-a11y/label-has-associated-control": "off",
-      "@next/next/no-img-element": "off"
+      "@next/next/no-img-element": "off",
+      "jsx-a11y/anchor-is-valid": "off"
     }
 }

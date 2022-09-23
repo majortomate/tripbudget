@@ -3,29 +3,31 @@
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Head from 'next/head';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import TravelPhotos from '../components/TravelPhotos';
 import YourExpenses from '../components/YourExpenses';
 import CreateTrip from '../components/CreateTrip';
 import EditProfile from '../components/EditProfile';
 import ChangePassword from '../components/ChangePassword';
-import WelcomeProfile from '../components/WelcomeProfile';
 import YourTrips from '../components/YourTrips';
+import { setGetAllTripsState } from '../features/trip/tripSlice';
 
-function Profile() {
-  const [showWelcome, setShowWelcome] = useState(true);
+function Profile({ data }) {
+  const [profile, setProfile] = useState(null);
   const [showcreateTrip, setshowCreateTrip] = useState(false);
-  const [showYourTrips, setShowYourTrips] = useState(false);
+  const [showYourTrips, setShowYourTrips] = useState(true);
   const [showYourExpenses, setShowYourExpenses] = useState(false);
   const [showTravelPhotos, setshowTravelPhotos] = useState(false);
   const [showEditProfile, setshowEditProfile] = useState(false);
   const [showChangePassword, setshowChangePassword] = useState(false);
+  const dispatch = useDispatch();
+  dispatch(setGetAllTripsState(data));
 
   const handleClick = (e) => {
     if (e.target.parentElement.id == 'createTrip') {
       return (
         setshowCreateTrip(true),
-        setShowWelcome(false),
         setShowYourTrips(false),
         setShowYourExpenses(false),
         setshowTravelPhotos(false),
@@ -36,7 +38,6 @@ function Profile() {
     if (e.target.parentElement.id == 'yourTrips') {
       return (
         setshowCreateTrip(false),
-        setShowWelcome(false),
         setShowYourTrips(true),
         setShowYourExpenses(false),
         setshowTravelPhotos(false),
@@ -47,7 +48,6 @@ function Profile() {
     if (e.target.parentElement.id == 'yourExpenses') {
       return (
         setshowCreateTrip(false),
-        setShowWelcome(false),
         setShowYourTrips(false),
         setShowYourExpenses(true),
         setshowTravelPhotos(false),
@@ -58,7 +58,6 @@ function Profile() {
     if (e.target.parentElement.id == 'travelPhotos') {
       return (
         setshowCreateTrip(false),
-        setShowWelcome(false),
         setShowYourTrips(false),
         setShowYourExpenses(false),
         setshowTravelPhotos(true),
@@ -69,7 +68,6 @@ function Profile() {
     if (e.target.parentElement.id == 'editProfile') {
       return (
         setshowCreateTrip(false),
-        setShowWelcome(false),
         setShowYourTrips(false),
         setShowYourExpenses(false),
         setshowTravelPhotos(false),
@@ -80,7 +78,6 @@ function Profile() {
     if (e.target.parentElement.id == 'changePassword') {
       return (
         setshowCreateTrip(false),
-        setShowWelcome(false),
         setShowYourTrips(false),
         setShowYourExpenses(false),
         setshowTravelPhotos(false),
@@ -89,6 +86,15 @@ function Profile() {
       );
     }
   };
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+    // Perform localStorage action
+      const item = localStorage.getItem('user');
+      const converted = JSON.parse(item);
+      setProfile(converted);
+    }
+  }, []);
 
   return (
     <div className="dark:bg-gray-900 relative gap-6">
@@ -102,11 +108,11 @@ function Profile() {
           <div className="overflow-y-auto py-4 px-3 bg-gray-100 rounded-md shadow dark:bg-gray-800">
             <div className="flex items-center pl-2.5 mb-5">
               <img src="https://res.cloudinary.com/knowhere/image/upload/v1663385501/static/avatar_vbxaac.jpg" className="mr-3 h-6 sm:h-7 rounded-full" alt="Profile Logo" />
-              <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Hi, Carlos!</span>
+              <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Welcome!</span>
             </div>
             <ul className="space-y-2">
               <li>
-                <a onClick={handleClick} href="#" id="createTrip" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700">
+                <a onClick={handleClick} href="#" id="createTrip" className={showcreateTrip ? 'dark:bg-gray-700 bg-gray-200  flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700' : 'flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700'}>
                   <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-directions flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M12 21v-4" />
@@ -120,7 +126,7 @@ function Profile() {
                 </a>
               </li>
               <li>
-                <a onClick={handleClick} href="#" id="yourTrips" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700">
+                <a onClick={handleClick} href="#" id="yourTrips" className={showYourTrips ? 'dark:bg-gray-700 bg-gray-200  flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700' : 'flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700'}>
                   <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-map-2 flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <line x1="18" y1="6" x2="18" y2="6.01" />
@@ -130,11 +136,11 @@ function Profile() {
                     <line x1="15" y1="15" x2="15" y2="20" />
                   </svg>
                   <span className="flex-1 ml-3 whitespace-nowrap">Your Trips</span>
-                  <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">3</span>
+                  {/*                   <span className="inline-flex justify-center items-center p-3 ml-3 w-3 h-3 text-sm font-medium text-blue-600 bg-blue-200 rounded-full dark:bg-blue-900 dark:text-blue-200">{data?.trips?.filter((trip) => trip.user === profile?.profile?._id).length}</span> */}
                 </a>
               </li>
               <li>
-                <a onClick={handleClick} href="#" id="yourExpenses" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700">
+                <a onClick={handleClick} href="#" id="yourExpenses" className={showYourExpenses ? 'dark:bg-gray-700 bg-gray-200  flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700' : 'flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700'}>
                   <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-calculator flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <rect x="4" y="3" width="16" height="18" rx="2" />
@@ -150,7 +156,7 @@ function Profile() {
                 </a>
               </li>
               <li>
-                <a onClick={handleClick} href="#" id="travelPhotos" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700">
+                <a onClick={handleClick} href="#" id="travelPhotos" className={showTravelPhotos ? 'dark:bg-gray-700 bg-gray-200  flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700' : 'flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700'}>
                   <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-photo flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <line x1="15" y1="8" x2="15.01" y2="8" />
@@ -163,13 +169,13 @@ function Profile() {
                 </a>
               </li>
               <li>
-                <a onClick={handleClick} href="#" id="editProfile" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700">
+                <a onClick={handleClick} href="#" id="editProfile" className={showEditProfile ? 'dark:bg-gray-700 bg-gray-200  flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700' : 'flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700'}>
                   <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" /></svg>
                   <span className="ml-3">Edit your Info</span>
                 </a>
               </li>
               <li>
-                <a onClick={handleClick} href="#" id="changePassword" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700">
+                <a onClick={handleClick} href="#" id="changePassword" className={showChangePassword ? 'dark:bg-gray-700 bg-gray-200  flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700' : 'flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700'}>
                   <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-lock-open flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" width="24" height="24" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <rect x="5" y="11" width="14" height="10" rx="2" />
@@ -189,7 +195,6 @@ function Profile() {
           </div>
         </aside>
         <main className="mainPanel w-full md:px-14 px-6">
-          {showWelcome && <WelcomeProfile />}
           {showcreateTrip && <CreateTrip />}
           {showYourTrips && <YourTrips />}
           {showYourExpenses && <YourExpenses />}
@@ -202,4 +207,12 @@ function Profile() {
   );
 }
 
+// This gets called on every request
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const response = await fetch('http://localhost:3000/api/trip');
+  const data = await response.json();
+  // Pass data to the page via props
+  return { props: { data } };
+}
 export default Profile;
