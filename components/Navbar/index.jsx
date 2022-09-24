@@ -111,7 +111,7 @@ export default function Navbar() {
           direction="row"
           spacing={6}
         >
-          {currentUser || profile
+          {profile
             ? <LoggedInAvatar />
             : (
               <>

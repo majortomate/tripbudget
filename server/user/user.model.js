@@ -26,6 +26,7 @@ const UserSchema = new Schema(
     },
     avatar: {
       type: String,
+      default: 'https://res.cloudinary.com/knowhere/image/upload/v1663623006/static/avatar-placeholder_asszyj.jpg',
     },
     basedCountry: {
       type: String,
@@ -34,6 +35,9 @@ const UserSchema = new Schema(
       type: String,
     },
     bio: {
+      type: String,
+    },
+    website: {
       type: String,
     },
     travels: [
@@ -66,7 +70,7 @@ const UserSchema = new Schema(
 
 UserSchema.virtual('profile').get(function profile() {
   const {
-    _id, firstName, username, email,
+    _id, firstName, username, email, avatar,
   } = this;
 
   return {
@@ -74,6 +78,7 @@ UserSchema.virtual('profile').get(function profile() {
     firstName,
     username,
     email,
+    avatar,
   };
 });
 export default models.User || model('User', UserSchema);

@@ -16,15 +16,17 @@ export const authSlice = createSlice({
     setLogoutState: () => ({
       user: null,
     }),
+    setEditProfileState: (state, action) => action.payload,
   },
   extraReducers: {
     [HYDRATE]: (state, action) => ({ ...state, ...action.payload.auth }),
   },
 });
 export const {
-  setLoginState, setRegisterState, setLogoutState, setGetAllUsersState,
+  setLoginState, setRegisterState, setLogoutState, setGetAllUsersState, setEditProfileState,
 } = authSlice.actions;
 
 export const selectUserState = (state) => state.auth?.user;
+export const selectUserStateII = (state) => state.auth;
 
 export default authSlice.reducer;

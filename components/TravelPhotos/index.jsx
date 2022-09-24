@@ -33,6 +33,11 @@ function TravelPhotos() {
       {
         cloudName: 'knowhere',
         uploadPreset: 'h5kqu8rm',
+        folder: 'travelPhotos',
+        maxImageFileSize: 3000000,
+        maxImageWidth: 1000,
+        sources: ['local', 'url', 'image_search'],
+        maxFiles: 1,
       },
       (error, result) => {
         if (
@@ -157,12 +162,12 @@ function TravelPhotos() {
         <div className="grid grid-cols-2">
           <div className="mb-2 col-span-2 md:col-span-1 lg:col-span-2">
             <label htmlFor="cityName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">City</label>
-            <input onChange={handleChange} name="cityName" type="text" id="tripName" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required="" placeholder="Where did you take this photo?" />
+            <input onChange={handleChange} name="cityName" type="text" id="cityName" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" required="" placeholder="Where did you take this photo?" />
           </div>
           <div className="flex justify-evenly col-span-2 lg:col-span-2 md:col-span-1">
             <div className="w-full">
               <label htmlFor="travelDate" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">When</label>
-              <input onChange={handleChange} name="travelDate" id="tripDateFrom" type="date" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input" placeholder="Select date start" required />
+              <input onChange={handleChange} name="travelDate" id="travelDate" type="date" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 datepicker-input" placeholder="Select date start" required />
             </div>
           </div>
         </div>
