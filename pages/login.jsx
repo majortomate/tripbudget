@@ -30,7 +30,7 @@ function Login() {
   };
 
   if (userState) {
-    router.push('/profile');
+    window.location.replace('/profile');
   }
   return (
     <div className="bg-white dark:bg-gray-900">

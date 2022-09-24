@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable react/style-prop-object */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState, useEffect } from 'react';
@@ -50,7 +51,7 @@ function LoggedInAvatar() {
   ) : null
          }
         <button type="button" onClick={handleClick}>
-          <img id="avatarButton" className="w-10 h-10 rounded-full cursor-pointer absolute right-10 top-5" src="https://res.cloudinary.com/knowhere/image/upload/v1663623006/static/avatar-placeholder_asszyj.jpg" alt="User dropdown" />
+          <img id="avatarButton" className="w-10 h-10 rounded-full cursor-pointer absolute right-10 top-5" src={currentUser?.profile?.avatar || profile?.profile?.avatar} alt="User dropdown" />
         </button>
 
       </div>

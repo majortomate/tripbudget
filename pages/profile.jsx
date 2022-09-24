@@ -4,7 +4,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import Head from 'next/head';
 import { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 import TravelPhotos from '../components/TravelPhotos';
 import YourExpenses from '../components/YourExpenses';
 import CreateTrip from '../components/CreateTrip';
@@ -12,10 +13,12 @@ import EditProfile from '../components/EditProfile';
 import ChangePassword from '../components/ChangePassword';
 import YourTrips from '../components/YourTrips';
 import { setGetAllTripsState } from '../features/trip/tripSlice';
-import { setGetAllUsersState } from '../features/auth/authSlice';
+import { setGetAllUsersState, selectUserStateII, setLogoutState } from '../features/auth/authSlice';
 import { setGetAlluploadTravelsState } from '../features/upload/uploadTravelsSlice';
+import { logout } from '../server/auth/local/auth.service';
 
 function Profile({ data, user, photos }) {
+  const router = useRouter();
   const [, setProfile] = useState(null);
   const [showcreateTrip, setshowCreateTrip] = useState(false);
   const [showYourTrips, setShowYourTrips] = useState(true);
@@ -24,10 +27,14 @@ function Profile({ data, user, photos }) {
   const [showEditProfile, setshowEditProfile] = useState(false);
   const [showChangePassword, setshowChangePassword] = useState(false);
   const dispatch = useDispatch();
-  dispatch(setGetAllTripsState(data));
-  dispatch(setGetAllUsersState(user));
-  dispatch(setGetAlluploadTravelsState(photos));
 
+  const selectUser = useSelector(selectUserStateII);
+
+  useEffect(() => {
+    dispatch(setGetAllTripsState(data));
+    dispatch(setGetAllUsersState(user));
+    dispatch(setGetAlluploadTravelsState(photos));
+  }, [data, user, photos, dispatch]);
   const handleClick = (e) => {
     if (e.target.parentElement.id == 'createTrip') {
       return (
@@ -100,6 +107,17 @@ function Profile({ data, user, photos }) {
     }
   }, []);
 
+  const handleLogout = async () => {
+    if (!selectUser) {
+      await logout();
+      dispatch(setLogoutState());
+      window.location.assign('/');
+    }
+    await logout();
+    dispatch(setLogoutState());
+    router.push('/');
+  };
+
   return (
     <div className="dark:bg-gray-900 relative gap-6">
       <Head>
@@ -111,7 +129,7 @@ function Profile({ data, user, photos }) {
         <aside className="w-64" aria-label="Sidebar">
           <div className="overflow-y-auto py-4 px-3 bg-gray-100 rounded-md shadow dark:bg-gray-800">
             <div className="flex items-center pl-2.5 mb-5">
-              <img src="https://res.cloudinary.com/knowhere/image/upload/v1663385501/static/avatar_vbxaac.jpg" className="mr-3 h-6 sm:h-7 rounded-full" alt="Profile Logo" />
+              {/* <img src={selectUser ? selectUser.filter((userMatch) => userMatch._id === profile?.profile._id).map((found) => found.avatar) : null} className="mr-3 h-6 sm:h-7 rounded-full" alt="Profile Logo" /> */}
               <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Welcome!</span>
             </div>
             <ul className="space-y-2">
@@ -186,11 +204,11 @@ function Profile({ data, user, photos }) {
                     <circle cx="12" cy="16" r="1" />
                     <path d="M8 11v-5a4 4 0 0 1 8 0" />
                   </svg>
-                  <span className="flex-1 ml-3 whitespace-nowrap">Change Your Password</span>
+                  <button type="button" className="flex-1 ml-3 whitespace-nowrap">Change Your Password</button>
                 </a>
               </li>
               <li>
-                <a onClick={handleClick} href="#" id="logout" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700">
+                <a onClick={handleLogout} href="#" id="logout" className="flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700">
                   <svg aria-hidden="true" className="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd" /></svg>
                   <span className="flex-1 ml-3 whitespace-nowrap">Logout</span>
                 </a>
