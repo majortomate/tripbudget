@@ -17,7 +17,9 @@ export default async (req, res) => {
       }
     case 'POST':
       const { id } = body;
+
       const user = await getSingleUser(id);
+
       try {
         const newTrip = new Trip(body);
         const savedTrip = await newTrip.save();

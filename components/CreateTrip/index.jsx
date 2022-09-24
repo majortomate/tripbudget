@@ -47,8 +47,8 @@ function CreateTrip() {
   };
 
   return (
-    <div className="flex flex-col w-full">
-      <div className="shadow overflow-hidden rounded md:rounded-lg space-y-6 bg-gray-50 px-4 py-5 sm:p-6 dark:bg-gray-800">
+    <div className="grid grid-rows-3">
+      <div className=" shadow overflow-hidden rounded md:rounded-lg space-y-6 bg-gray-50 px-4 py-5 sm:p-6 dark:bg-gray-800">
         <div>
           <h1 className="font text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             Let's Create a Trip

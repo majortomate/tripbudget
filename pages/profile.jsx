@@ -12,9 +12,11 @@ import EditProfile from '../components/EditProfile';
 import ChangePassword from '../components/ChangePassword';
 import YourTrips from '../components/YourTrips';
 import { setGetAllTripsState } from '../features/trip/tripSlice';
+import { setGetAllUsersState } from '../features/auth/authSlice';
+import { setGetAlluploadTravelsState } from '../features/upload/uploadTravelsSlice';
 
-function Profile({ data }) {
-  const [profile, setProfile] = useState(null);
+function Profile({ data, user, photos }) {
+  const [, setProfile] = useState(null);
   const [showcreateTrip, setshowCreateTrip] = useState(false);
   const [showYourTrips, setShowYourTrips] = useState(true);
   const [showYourExpenses, setShowYourExpenses] = useState(false);
@@ -23,6 +25,8 @@ function Profile({ data }) {
   const [showChangePassword, setshowChangePassword] = useState(false);
   const dispatch = useDispatch();
   dispatch(setGetAllTripsState(data));
+  dispatch(setGetAllUsersState(user));
+  dispatch(setGetAlluploadTravelsState(photos));
 
   const handleClick = (e) => {
     if (e.target.parentElement.id == 'createTrip') {
@@ -210,9 +214,22 @@ function Profile({ data }) {
 // This gets called on every request
 export async function getServerSideProps() {
   // Fetch data from external API
-  const response = await fetch('http://localhost:3000/api/trip');
-  const data = await response.json();
-  // Pass data to the page via props
-  return { props: { data } };
+  const [tripRes, userRes, photosRes] = await Promise.all([
+    fetch('http://localhost:3000/api/trip'),
+    fetch('http://localhost:3000/api/user'),
+    fetch('http://localhost:3000/api/travelPhotos'),
+  ]);
+  const [trips, user, photos] = await Promise.all([
+    tripRes.json(),
+    userRes.json(),
+    photosRes.json(),
+  ]);
+  return {
+    props: {
+      data: trips,
+      user,
+      photos,
+    },
+  };
 }
 export default Profile;
