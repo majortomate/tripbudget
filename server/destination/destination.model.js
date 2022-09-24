@@ -55,12 +55,4 @@ const DestinationSchema = new Schema(
   },
 );
 
-DestinationSchema.pre('save', (next) => {
-  DestinationSchema.aggregate([
-    { $match: { $text: 'Budget' } },
-    { $group: { _id: null, amount: { $sum: '$amount' } } },
-  ]);
-  next();
-});
-
 export default models.Destination || model('Destination', DestinationSchema);

@@ -3,7 +3,7 @@ import Head from 'next/head';
 
 function ChangePassword() {
   return (
-    <div className="bg-white dark:bg-gray-900">
+    <div className="bg-white dark:bg-gray-900 h-screen align-middle items-start">
       <Head>
         <title>Change your password | TripBudget - Budget your trip like a pro</title>
         <meta name="description" content="Login page" />

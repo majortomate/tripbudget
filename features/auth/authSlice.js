@@ -10,6 +10,7 @@ export const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    setGetAllUsersState: (state, action) => action.payload,
     setLoginState: (state, action) => action.payload,
     setRegisterState: (state, action) => action.payload,
     setLogoutState: () => ({
@@ -21,7 +22,7 @@ export const authSlice = createSlice({
   },
 });
 export const {
-  setLoginState, setRegisterState, setLogoutState,
+  setLoginState, setRegisterState, setLogoutState, setGetAllUsersState,
 } = authSlice.actions;
 
 export const selectUserState = (state) => state.auth?.user;

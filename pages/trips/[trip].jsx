@@ -19,7 +19,6 @@ function SingleTripPage({ data }) {
   const router = useRouter();
   const { trip } = router.query;
   const currentTrip = useSelector(selectSingleTripState);
-  console.log(currentTrip);
   const handleDelete = async (key) => {
     await axios.delete(`http://localhost:3000/api/destination/${key}`);
     dispatch(setDeleteDestinationTripPage(key));
@@ -35,7 +34,7 @@ function SingleTripPage({ data }) {
   }, [trip, dispatch]);
 
   return (
-    <div className="dark:bg-gray-900 relative gap-6">
+    <div className="dark:bg-gray-900 relative gap-6 grid grid-rows-2">
       {data
         ? (
           <>

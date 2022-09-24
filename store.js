@@ -3,6 +3,7 @@ import { createWrapper } from 'next-redux-wrapper';
 import auth from './features/auth/authSlice';
 import trip from './features/trip/tripSlice';
 import destination from './features/destination/destinationSlice';
+import uploadTravels from './features/upload/uploadTravelsSlice';
 
 export function makeStore() {
   return configureStore({
@@ -10,6 +11,7 @@ export function makeStore() {
       auth,
       trip,
       destination,
+      uploadTravels,
     },
   });
 }
