@@ -4,6 +4,7 @@ import auth from './features/auth/authSlice';
 import trip from './features/trip/tripSlice';
 import destination from './features/destination/destinationSlice';
 import uploadTravels from './features/upload/uploadTravelsSlice';
+import post from './features/post/postSlice';
 
 export function makeStore() {
   return configureStore({
@@ -12,6 +13,7 @@ export function makeStore() {
       trip,
       destination,
       uploadTravels,
+      post,
     },
   });
 }
