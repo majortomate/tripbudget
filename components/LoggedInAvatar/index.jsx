@@ -3,7 +3,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import { logout } from '../../server/auth/local/auth.service';
 import { setLogoutState, selectUserStateII } from '../../features/auth/authSlice';
@@ -13,7 +12,6 @@ function LoggedInAvatar() {
   const currentUser = useSelector(selectUserStateII);
   const [profile, setProfile] = useState(null);
   const dispatch = useDispatch();
-  const router = useRouter();
 
   const handleClick = () => {
     setOpenDropdown(!openDropdown);
@@ -26,7 +24,7 @@ function LoggedInAvatar() {
     }
     await logout();
     dispatch(setLogoutState());
-    router.push('/');
+    window.location.assign('/');
   };
   useEffect(() => {
     if (typeof window !== 'undefined') {
