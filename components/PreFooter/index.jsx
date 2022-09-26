@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* This example requires Tailwind CSS v2.0+ */
+import NextLink from 'next/link';
+
 export default function PreFooter() {
   return (
     <div className="bg-tripbudget-yellow">
@@ -12,12 +12,14 @@ export default function PreFooter() {
         </h2>
         <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
           <div className="inline-flex rounded-md shadow">
-            <a
-              href="#"
-              className="inline-flex items-center justify-center rounded-md border border-transparent bg-knowhere-dark-blue px-5 py-3 text-base font-medium text-white hover:bg-black"
-            >
-              Get started
-            </a>
+            <NextLink href="/register" passHref>
+              <a
+                href="#"
+                className="inline-flex items-center justify-center rounded-md border border-transparent bg-knowhere-dark-blue px-5 py-3 text-base font-medium text-white hover:bg-black"
+              >
+                Get started
+              </a>
+            </NextLink>
           </div>
           <div className="ml-3 inline-flex rounded-md shadow">
             <a

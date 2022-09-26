@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* This example requires Tailwind CSS v2.0+ */
+import NextLink from 'next/link';
+
 export default function Hero() {
   return (
     <div className="relative overflow-hidden dark:bg-gray-800" id="home">
@@ -81,13 +81,14 @@ export default function Hero() {
                   </div>
                 </div>
               </div>
-
-              <a
-                href="#"
-                className="inline-block rounded-md border border-transparent bg-knowhere-dark-blue py-3 px-8 text-center font-medium dark:hover:text-white dark:text-black text-white hover:bg-knowhere-darker-blue dark:bg-tripbudget-yellow"
-              >
-                Start Now
-              </a>
+              <NextLink href="/register" passHref>
+                <a
+                  href="#"
+                  className="inline-block rounded-md border border-transparent bg-knowhere-dark-blue py-3 px-8 text-center font-medium dark:hover:text-white dark:text-black text-white hover:bg-knowhere-darker-blue dark:bg-tripbudget-yellow"
+                >
+                  Start Now
+                </a>
+              </NextLink>
             </div>
           </div>
         </div>
