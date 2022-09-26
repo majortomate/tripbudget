@@ -25,7 +25,7 @@ function DestinationCard({ currentDestinations }) {
             <span className="text-sm text-gray-500 dark:text-gray-400">
               {`${setTime(destination.stayDateFrom)} to ${setTime(destination.stayDateTo)}`}
             </span>
-            <span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">
               {' '}
               { `(${daysBetweenDates(new Date(destination.stayDateFrom), new Date(destination.stayDateTo))} days)`}
             </span>

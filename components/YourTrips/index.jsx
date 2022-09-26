@@ -35,7 +35,7 @@ function YourTrips() {
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-4">
-          {allTripsCurrentUser ? allTripsCurrentUser?.trips?.filter((trip) => trip.user === profile?.profile?._id).map((singleTrip) => (
+          {allTripsCurrentUser ? allTripsCurrentUser?.trips?.filter((trip) => trip.user._id === profile?.profile?._id).map((singleTrip) => (
             <div className="col-span-1 md:col-span-1 lg:col-span-1 bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700" key={singleTrip._id}>
               <div className="flex flex-col items-center px-4 py-4 relative">
                 <img className="mb-3 w-24 h-24 rounded-full shadow-lg" src="https://res.cloudinary.com/knowhere/image/upload/v1663519099/static/imagePlaceholder_qs1zkr.jpg" alt="avatar" />

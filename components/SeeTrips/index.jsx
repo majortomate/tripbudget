@@ -1,4 +1,5 @@
-import TripCard from '../TripCard';
+import NextLink from 'next/link';
+import LandingTripCard from '../LandingTripCard';
 
 /* eslint-disable @next/next/no-img-element */
 
@@ -12,20 +13,18 @@ export default function SeeTrips() {
             Check what trips have created others
           </p>
         </div>
-
-        <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          <div className="group">
-            <TripCard />
-          </div>
-          <div className="group">
-            <TripCard />
-          </div>
-          <div className="group">
-            <TripCard />
-          </div>
-          <div className="group">
-            <TripCard />
-          </div>
+        <div>
+          <LandingTripCard />
+        </div>
+        <div className="flex justify-center mt-20">
+          <NextLink href="http://localhost:3000/trips/" passHref>
+            <a
+              href="#"
+              className="inline-block rounded-md border border-transparent bg-knowhere-dark-blue py-3 px-8 text-center font-medium dark:hover:text-white dark:text-black text-white hover:bg-knowhere-darker-blue dark:bg-tripbudget-yellow"
+            >
+              SEE MORE TRIPS
+            </a>
+          </NextLink>
         </div>
       </div>
     </div>
