@@ -10,10 +10,12 @@ import BlogPosts from '../components/BlogPosts';
 import PreFooter from '../components/PreFooter';
 import ScrollToTop from '../components/ScrollToTop';
 import { setGetAllTripsState } from '../features/trip/tripSlice';
+import { setGetAllPostsState } from '../features/post/postSlice';
 
-export default function Home({ allTrips }) {
+export default function Home({ allTrips, posts }) {
   const dispatch = useDispatch();
   dispatch(setGetAllTripsState(allTrips));
+  dispatch(setGetAllPostsState(posts));
 
   return (
     <div className={styles.container}>
@@ -25,7 +27,7 @@ export default function Home({ allTrips }) {
       <Hero />
       <HowThatWorks />
       <SeeTrips />
-      <BlogPosts />
+      <BlogPosts posts={posts} />
       <PreFooter />
       <ScrollToTop />
     </div>
@@ -35,12 +37,42 @@ export default function Home({ allTrips }) {
 // This gets called on every request
 export async function getServerSideProps() {
   // Fetch data from external API
-  const response = await fetch('http://localhost:3000/api/trip');
-  const allTrips = await response.json();
+  const [tripRes, postsRes] = await Promise.all([
+    fetch('http://localhost:3000/api/trip'),
+    fetch('https://wordpress-482900-2916415.cloudwaysapps.com/graphql', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        query: `
+      query HomePageQuery {
+        posts {
+          nodes {
+            date
+            slug
+            title
+            content
+            id
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+          }
+        }
+      }
+          `,
+      }),
+    }),
 
+  ]);
+  const [allTrips, posts] = await Promise.all([
+    tripRes.json(),
+    postsRes.json(),
+  ]);
   return {
     props: {
       allTrips,
+      posts,
     },
   };
 }
