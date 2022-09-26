@@ -38,7 +38,7 @@ export default async (req, res) => {
       template_id: 'd-67cc7f78c54441a7a5e94c6986640003', // template id
       dynamic_template_data: {
         firstName: user.firstName,
-        url: `http://localhost:3000/verify/${emailHash}`,
+        url: `https://tripbudget-mnc8.vercel.app/verify/${emailHash}`,
       },
     };
 

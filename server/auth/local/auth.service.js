@@ -2,7 +2,7 @@ import axios from 'axios';
 import jwt from 'jsonwebtoken';
 // import User from '../../user/user.model';
 
-export const register = (firstName, lastName, username, email, password) => axios.post('http://localhost:3000/api/auth/local/register', {
+export const register = (firstName, lastName, username, email, password) => axios.post('https://tripbudget-mnc8.vercel.app/api/auth/local/register', {
   firstName,
   lastName,
   username,
@@ -10,7 +10,7 @@ export const register = (firstName, lastName, username, email, password) => axio
   password,
 });
 export const login = (email, password) => axios
-  .post('http://localhost:3000/api/auth/local/login', {
+  .post('https://tripbudget-mnc8.vercel.app/api/auth/local/login', {
     email,
     password,
   })
@@ -25,7 +25,7 @@ export const logout = () => {
 };
 
 export const verify = async (token) => {
-  const response = await fetch(`http://localhost:3000/api/auth/local/verify/${token}`);
+  const response = await fetch(`https://tripbudget-mnc8.vercel.app/api/auth/local/verify/${token}`);
   return response.json();
 };
 

@@ -17,7 +17,7 @@ export default function SeeTrips() {
           <LandingTripCard />
         </div>
         <div className="flex justify-center mt-20">
-          <NextLink href="http://localhost:3000/trips" passHref>
+          <NextLink href="https://tripbudget-mnc8.vercel.app/trips" passHref>
             <a
               href="#"
               className="inline-block rounded-md border border-transparent bg-knowhere-dark-blue py-3 px-8 text-center font-medium dark:hover:text-white dark:text-black text-white hover:bg-knowhere-darker-blue dark:bg-tripbudget-yellow"

@@ -39,7 +39,7 @@ function CreateTrip() {
       user: currentUser?._id || profile?.profile._id,
     };
     setLoading(true);
-    const response = await axios.post('http://localhost:3000/api/trip/', data);
+    const response = await axios.post('https://tripbudget-mnc8.vercel.app/api/trip/', data);
     dispatch(setCreateTripState(response.data));
     setLoading(false);
     setHide(true);
