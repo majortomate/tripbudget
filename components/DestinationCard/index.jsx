@@ -11,7 +11,7 @@ function DestinationCard({ currentDestinations }) {
   const dispatch = useDispatch();
 
   const handleDelete = async (key) => {
-    await axios.delete(`http://localhost:3000/api/destination/${key}`);
+    await axios.delete(`https://tripbudget-mnc8.vercel.app/api/destination/${key}`);
     dispatch(setSingleDeleteDestinationState(key));
   };
 
