@@ -11,8 +11,8 @@ import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import TableTrip from '../../components/TableTrip';
 import { setGetSingleTripState, selectSingleTripState, setDeleteDestinationTripPage } from '../../features/trip/tripSlice';
-import setTime from '../services/toLocalString';
-import { totalByDestination, daysBetweenDates } from '../services/calculateBudgets';
+import setTime from '../../services/toLocalString';
+import { totalByDestination, daysBetweenDates } from '../../services/calculateBudgets';
 
 function SingleTripPage({ data }) {
   const dispatch = useDispatch();

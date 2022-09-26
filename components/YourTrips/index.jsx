@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import setTime from '../../pages/services/toLocalString';
+import setTime from '../../services/toLocalString';
 import { selectAllTripsUserState, setSingleDeleteTripState } from '../../features/trip/tripSlice';
 
 function YourTrips() {

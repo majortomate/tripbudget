@@ -5,7 +5,7 @@
 import { useSelector } from 'react-redux';
 import NextLink from 'next/link';
 import { selectPostsState } from '../../features/post/postSlice';
-import setTime from '../../pages/services/toLocalString';
+import setTime from '../../services/toLocalString';
 
 function BlogPosts() {
   const allPosts = useSelector(selectPostsState);

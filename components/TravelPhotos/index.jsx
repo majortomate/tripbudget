@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
 import axios from 'axios';
-import setTime from '../../pages/services/toLocalString';
+import setTime from '../../services/toLocalString';
 import { setCreateUploadTravelsState, selectAllPhotosState, setSingleDeleteUploadTravelState } from '../../features/upload/uploadTravelsSlice';
 
 function TravelPhotos() {

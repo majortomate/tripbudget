@@ -1,17 +1,16 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
 import Head from 'next/head';
-import setTime from '../services/toLocalString';
+import setTime from '../../services/toLocalString';
 
 function SinglePost(data) {
+  const seoTitle = `${data.post.title} - Budget your trip like a pro`;
   return (
 
     <div className="max-w-screen-xl mx-auto mt-20">
       <Head>
         <title>
-          {data.post.title}
-          {' '}
-          - Budget your trip like a pro
+          {seoTitle}
         </title>
         <meta name="description" content="Budget your trip like a pro" />
         <link rel="icon" href="/favicon.ico" />
