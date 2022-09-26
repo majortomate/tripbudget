@@ -3,9 +3,9 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
-import setTime from '../../pages/services/toLocalString';
+import setTime from '../../services/toLocalString';
 import { setSingleDeleteDestinationState } from '../../features/destination/destinationSlice';
-import { totalByDestination, daysBetweenDates } from '../../pages/services/calculateBudgets';
+import { totalByDestination, daysBetweenDates } from '../../services/calculateBudgets';
 
 function DestinationCard({ currentDestinations }) {
   const dispatch = useDispatch();

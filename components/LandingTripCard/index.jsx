@@ -1,8 +1,8 @@
 import NextLink from 'next/link';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-import setTime from '../../pages/services/toLocalString';
-import { totalByDestination } from '../../pages/services/calculateBudgets';
+import setTime from '../../services/toLocalString';
+import { totalByDestination } from '../../services/calculateBudgets';
 import { selectAllTripsUserState } from '../../features/trip/tripSlice';
 import SocialShare from '../SocialShare';
 

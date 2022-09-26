@@ -5,8 +5,8 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import CreateDestination from '../CreateDestination';
 import DropdownOptions from '../DropdownOptions';
-import setTime from '../../pages/services/toLocalString';
-import { getTotalTripDailyBudget } from '../../pages/services/calculateBudgets';
+import setTime from '../../services/toLocalString';
+import { getTotalTripDailyBudget } from '../../services/calculateBudgets';
 import { setDeleteTripState } from '../../features/trip/tripSlice';
 import { setDeleteDestinationState, selectDestinationState } from '../../features/destination/destinationSlice';
 

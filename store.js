@@ -15,6 +15,7 @@ export function makeStore() {
       uploadTravels,
       post,
     },
+    devTools: false,
   });
 }
-export const wrapper = createWrapper(makeStore);
+export const wrapper = createWrapper(makeStore, { debug: false });

@@ -10,8 +10,8 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { setSingleUserState } from '../../features/auth/authSlice';
-import setTime from '../services/toLocalString';
-import { totalByDestination } from '../services/calculateBudgets';
+import setTime from '../../services/toLocalString';
+import { totalByDestination } from '../../services/calculateBudgets';
 
 function SingleTravelerPage({ data }) {
   const dispatch = useDispatch();

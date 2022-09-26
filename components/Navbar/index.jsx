@@ -122,7 +122,7 @@ export default function Navbar() {
                     fontWeight={400}
                     variant="link"
                     color={linkColor}
-                    _hover={linkHoverColor}
+                    hover={linkHoverColor}
                     cursor="pointer"
                   >
                     Sign In
@@ -136,7 +136,7 @@ export default function Navbar() {
                     color="black"
                     bg="#ffde5a"
                     href="#"
-                    _hover={{
+                    hover={{
                       bg: '#f2cb2e',
                     }}
                   >
@@ -174,7 +174,7 @@ function DesktopNav() {
                 fontSize="md"
                 fontWeight={500}
                 color={linkColor}
-                _hover={{
+                hover={{
                   textDecoration: 'none',
                   color: linkHoverColor,
                 }}
@@ -214,7 +214,7 @@ function DesktopSubNav({ label, href, subLabel }) {
       display="block"
       p={2}
       rounded="md"
-      _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}
+      hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}
     >
       <Stack direction="row" align="center">
         <Box>
@@ -268,7 +268,7 @@ function MobileNavItem({ label, children, href }) {
         href={href ?? '#'}
         justify="space-between"
         align="center"
-        _hover={{
+        hover={{
           textDecoration: 'none',
         }}
       >

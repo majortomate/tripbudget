@@ -6,11 +6,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
 import { logout } from '../../server/auth/local/auth.service';
-import { setLogoutState } from '../../features/auth/authSlice';
+import { setLogoutState, selectUserStateII } from '../../features/auth/authSlice';
 
 function LoggedInAvatar() {
   const [openDropdown, setOpenDropdown] = useState(false);
-  const currentUser = useSelector((state) => state.auth?.user?.profile);
+  const currentUser = useSelector(selectUserStateII);
   const [profile, setProfile] = useState(null);
   const dispatch = useDispatch();
   const router = useRouter();

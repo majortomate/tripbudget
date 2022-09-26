@@ -1,5 +1,5 @@
 import React from 'react';
-import { daysBetweenDates } from '../../pages/services/calculateBudgets';
+import { daysBetweenDates } from '../../services/calculateBudgets';
 
 function TableTrip({ currentTrip }) {
   return (
