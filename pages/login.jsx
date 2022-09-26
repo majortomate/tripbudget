@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Head from 'next/head';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import swal from 'sweetalert';
 import { login } from '../server/auth/local/auth.service';
 import { setLoginState, selectUserState } from '../features/auth/authSlice';
 
@@ -23,15 +24,27 @@ function Login() {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const { email, password } = form;
-    setLoading(true);
-    const response = await login(email, password);
-    dispatch(setLoginState({ user: response }));
+    try {
+      const { email, password } = form;
+      setLoading(true);
+      const response = await login(email, password);
+      dispatch(setLoginState({ user: response }));
+      window.location.replace('/profile');
+    } catch (error) {
+      swal({
+        title: 'Error!',
+        text: 'Your user or password  might be invalid',
+        icon: 'error',
+      });
+      localStorage.clear();
+      setTimeout(() => {
+        window.location.replace('/login');
+      }, 1500);
+
+      console.log(error);
+    }
   };
 
-  if (userState) {
-    window.location.replace('/profile');
-  }
   return (
     <div className="bg-white dark:bg-gray-900">
       <Head>
