@@ -23,7 +23,7 @@ function BlogPosts() {
       <div className="container max-w-2xl p-6 mx-auto space-y-6 sm:space-y-12 lg:max-w-7xl">
         <div className="grid justify-center grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {allPosts ? allPosts?.nodes?.map((post) => (
-            <NextLink href={`http://localhost:3000/blog/${post.slug}`} passHref key={post.id}>
+            <NextLink href={`https://tripbudget-mnc8.vercel.app/blog/${post.slug}`} passHref key={post.id}>
               <a rel="noopener noreferrer" href="#" className="max-w-sm mx-auto group hover:no-underline focus:no-underline rounded-lg border border-gray-200 shadow-md dark:bg-gray-700 dark:border-gray-700 bg-white">
                 <img role="presentation" className="object-cover w-full rounded h-44 dark:bg-gray-500" src={post.featuredImage?.node.sourceUrl} />
                 <div className="p-6 space-y-2">

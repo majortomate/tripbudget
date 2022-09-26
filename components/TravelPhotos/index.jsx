@@ -69,7 +69,7 @@ function TravelPhotos() {
       user: profile.profile._id,
     };
     setLoading(true);
-    const response = await axios.post('http://localhost:3000/api/travelPhotos/', data);
+    const response = await axios.post('https://tripbudget-mnc8.vercel.app/api/travelPhotos/', data);
     dispatch(setCreateUploadTravelsState(response.data));
     setLoading(false);
     setForm({});
@@ -81,7 +81,7 @@ function TravelPhotos() {
     id: profile?.profile._id,
   };
   const handleDelete = async (key) => {
-    await axios.delete(`http://localhost:3000/api/travelPhotos/${key}`, dataId);
+    await axios.delete(`https://tripbudget-mnc8.vercel.app/api/travelPhotos/${key}`, dataId);
     dispatch(setSingleDeleteUploadTravelState(key));
   };
 
