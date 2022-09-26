@@ -10,7 +10,6 @@ import setTime from '../../pages/services/toLocalString';
 import { setCreateUploadTravelsState, selectAllPhotosState, setSingleDeleteUploadTravelState } from '../../features/upload/uploadTravelsSlice';
 
 function TravelPhotos() {
-  const [openDropdown, setOpenDropdown] = useState(false);
   const [profile, setProfile] = useState(null);
   const [openModal, setOpenModal] = useState(false);
   const [form, setForm] = useState({});
@@ -37,7 +36,6 @@ function TravelPhotos() {
         maxImageFileSize: 3000000,
         maxImageWidth: 1000,
         sources: ['local', 'url', 'image_search'],
-        maxFiles: 1,
       },
       (error, result) => {
         if (
@@ -53,10 +51,6 @@ function TravelPhotos() {
 
   const handleOpenModal = () => {
     setOpenModal(!openModal);
-  };
-
-  const handleClick = () => {
-    setOpenDropdown(!openDropdown);
   };
 
   const handleChange = (e) => {
@@ -188,14 +182,14 @@ function TravelPhotos() {
               Creating...
             </button>
           )}
-        <button onClick={handleClick} type="button" className="text-gray-500 bg-white hover:bg-gray-100 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600">Cancel</button>
+        <button onClick={handleOpenModal} type="button" className="text-gray-500 bg-white hover:bg-gray-100 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600">Cancel</button>
       </div>
     </form>
   </div>
 </div>
 )}
         <div className="grid grid-rows-2 grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-4">
-          {currentTravelPhotos ? currentTravelPhotos?.photos?.map((photo) => (
+          {currentTravelPhotos ? currentTravelPhotos?.photos?.filter((travelPhoto) => travelPhoto.user === profile?.profile?._id).map((photo) => (
             <div className="col-span-1 md:col-span-1 lg:col-span-1 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700" key={photo._id}>
               <img className="rounded-t-lg h-1/2 text-center mx-auto" src={photo.image} alt="places ive been" />
               <div className="pt-5 pl-10 pr-10 pb-0">

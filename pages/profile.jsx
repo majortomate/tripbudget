@@ -108,7 +108,7 @@ function Profile({ data, user, photos }) {
   }, []);
 
   const handleLogout = async () => {
-    if (!selectUser) {
+    if (selectUser) {
       await logout();
       dispatch(setLogoutState());
       window.location.assign('/');
