@@ -18,4 +18,4 @@ export function makeStore() {
     devTools: false,
   });
 }
-export const wrapper = createWrapper(makeStore, { debug: false });
+export const wrapper = createWrapper(makeStore, { debug: true });

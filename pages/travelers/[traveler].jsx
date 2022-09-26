@@ -17,10 +17,11 @@ function SingleTravelerPage({ data }) {
   const dispatch = useDispatch();
   const router = useRouter();
   const { traveler } = router.query;
+  const seoTitle = `${data.username} - Budget your trip like a pro`;
 
   useEffect(() => {
     const fetchSingleUserData = async () => {
-      const response = await axios(`https://tripbudget-mnc8.vercel.app/api/user/${traveler}`);
+      const response = await axios(`http://localhost:3000/api/user/${traveler}`);
       dispatch(setSingleUserState(response.data));
     };
 
@@ -34,9 +35,7 @@ function SingleTravelerPage({ data }) {
           <>
             <Head>
               <title>
-                {data.username}
-                {' '}
-                - Budget your trip like a pro
+                {seoTitle}
               </title>
               <meta name="description" content="Profile page" />
               <link rel="icon" href="/favicon.ico" />
@@ -196,7 +195,7 @@ function SingleTravelerPage({ data }) {
                           </p>
                         </div>
                         <div className="flex mt-4 space-x-3 md:mt-6 justify-between">
-                          <NextLink href={`https://tripbudget-mnc8.vercel.app/trips/public/${trip._id}`} passHref>
+                          <NextLink href={`http://localhost:3000/trips/public/${trip._id}`} passHref>
                             <a href="#" className="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-knowhere-dark-blue rounded-lg hover:bg-knowhere-darker-blue dark:bg-blue-600 dark:hover:bg-blue-700">See details</a>
                           </NextLink>
                         </div>
@@ -216,7 +215,7 @@ function SingleTravelerPage({ data }) {
 export async function getServerSideProps(context) {
   const { traveler } = context.params;
   // Fetch data from external API
-  const response = await fetch(`https://tripbudget-mnc8.vercel.app/api/user/${traveler}`);
+  const response = await fetch(`http://localhost:3000/api/user/${traveler}`);
   const data = await response.json();
   // Pass data to the page via props
   return { props: { data } };

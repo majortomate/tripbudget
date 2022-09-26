@@ -2,7 +2,7 @@
 import React from 'react';
 
 function SocialShare({ id }) {
-  const tripUrl = `https://tripbudget-mnc8.vercel.app/trips/public/${id}`;
+  const tripUrl = `http://localhost:3000/trips/public/${id}`;
 
   return (
     <div className="grid grid-cols-4 justify-items-stretch content-center gap-1">

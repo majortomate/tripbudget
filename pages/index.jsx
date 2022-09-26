@@ -38,7 +38,7 @@ export default function Home({ allTrips, posts }) {
 export async function getServerSideProps() {
   // Fetch data from external API
   const [tripRes, postsRes] = await Promise.all([
-    fetch('https://tripbudget-mnc8.vercel.app/api/trip'),
+    fetch('http://localhost:3000/api/trip'),
     fetch('https://wordpress-482900-2916415.cloudwaysapps.com/graphql', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

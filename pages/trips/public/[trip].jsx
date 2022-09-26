@@ -19,10 +19,11 @@ function SingleTripPage({ data }) {
   const router = useRouter();
   const { trip } = router.query;
   const currentTrip = useSelector(selectSingleTripState);
+  const seoTitle = `${data.tripName} - Budget your trip like a pro`;
 
   useEffect(() => {
     const fetchSingleTripData = async () => {
-      const response = await axios(`https://tripbudget-mnc8.vercel.app/api/trip/${trip}`);
+      const response = await axios(`http://localhost:3000/api/trip/${trip}`);
       dispatch(setGetSingleTripState(response.data));
     };
 
@@ -36,9 +37,7 @@ function SingleTripPage({ data }) {
           <>
             <Head>
               <title>
-                {data.tripName}
-                {' '}
-                - Budget your trip like a pro
+                {seoTitle}
               </title>
               <meta name="description" content="Profile page" />
               <link rel="icon" href="/favicon.ico" />
@@ -63,7 +62,7 @@ function SingleTripPage({ data }) {
                   <h3 className="self-center ml-3 text-lg font-normal dark:text-white text-gray-600">
                     <strong>Author:</strong>
                     <br />
-                    <NextLink href={`https://tripbudget-mnc8.vercel.app/travelers/${data.user._id}`} passHref>
+                    <NextLink href={`http://localhost:3000/travelers/${data.user._id}`} passHref>
                       <a href="" className="text-blue-700 underline dark:text-tripbudget-yellow">{data.user.username}</a>
                     </NextLink>
                   </h3>
@@ -132,7 +131,7 @@ function SingleTripPage({ data }) {
                     <div>
                       <h3 className="m-0 self-center ml-3 text-lg font-normal dark:text-white text-gray-600">
                         <br />
-                        <NextLink href={`https://tripbudget-mnc8.vercel.app/travelers/${data.user._id}`} passHref>
+                        <NextLink href={`http://localhost:3000/travelers/${data.user._id}`} passHref>
                           <a href="" className="text-blue-700 underline dark:text-tripbudget-yellow">{data.user.username}</a>
                         </NextLink>
                       </h3>
@@ -183,7 +182,7 @@ function SingleTripPage({ data }) {
 export async function getServerSideProps(context) {
   const { trip } = context.params;
   // Fetch data from external API
-  const response = await fetch(`https://tripbudget-mnc8.vercel.app/api/trip/${trip}`);
+  const response = await fetch(`http://localhost:3000/api/trip/${trip}`);
   const data = await response.json();
   // Pass data to the page via props
   return { props: { data } };
