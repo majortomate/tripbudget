@@ -22,6 +22,10 @@ export default function Home({ allTrips, posts }) {
       <Head>
         <title>TripBudget - Budget your trip like a pro</title>
         <meta name="description" content="Budget your trip like a pro" />
+        <meta property="og:title" content="TripBudget - Budget your trip like a pro" />
+        <meta property="og:image" content="https://res.cloudinary.com/knowhere/image/upload/v1664142646/static/isotipo_tripbudget_bkc2f4.svg" />
+        <meta property="og:description" content="A trip could be way expensive if you don't know the costs or at least how much in reality you will like to spend. Be the master of your trip expenses and start budgeting your trip now." />
+        <meta property="og:url" content="https://tripbudget-mnc8.vercel.app/" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
