@@ -1,7 +1,13 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+
+const images = {
+  domains: [
+    'res.cloudinary.com',
+  ],
+};
+
+module.exports = {
   reactStrictMode: true,
   swcMinify: true,
-}
-
-module.exports = nextConfig
+  images,
+};
