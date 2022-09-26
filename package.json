@@ -38,7 +38,8 @@
     "react-router-dom": "^6.4.0",
     "react-tabs": "^5.1.0",
     "redux": "^4.2.0",
-    "redux-devtools-extension": "^2.13.9"
+    "redux-devtools-extension": "^2.13.9",
+    "sweetalert": "^2.1.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.11",

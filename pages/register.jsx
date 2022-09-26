@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import swal from 'sweetalert';
 import { register } from '../server/auth/local/auth.service';
 import { setRegisterState, selectUserState } from '../features/auth/authSlice';
 
@@ -23,12 +24,27 @@ function Register() {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    const {
-      firstName, lastName, username, email, password,
-    } = form;
-    setLoading(true);
-    const response = await register(firstName, lastName, username, email, password);
-    dispatch(setRegisterState({ user: response }));
+    try {
+      const {
+        firstName, lastName, username, email, password,
+      } = form;
+      setLoading(true);
+      const response = await register(firstName, lastName, username, email, password);
+      dispatch(setRegisterState({ user: response }));
+      router.push('/verify');
+    } catch (error) {
+      swal({
+        title: 'Error!',
+        text: 'Your user or username already exists',
+        icon: 'error',
+      });
+      localStorage.clear();
+      setTimeout(() => {
+        window.location.replace('/register');
+      }, 1500);
+
+      console.log(error);
+    }
   };
 
   if (userState) {
