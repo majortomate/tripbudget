@@ -83,6 +83,7 @@ export default function EditProfile() {
 
       <div className="mt-5 md:col-span-2 md:mt-0">
         <form onSubmit={handleSubmit}>
+          {console.log(currentUser)}
           <div className="shadow overflow-hidden rounded md:rounded-lg">
             <div className="space-y-6 bg-gray-50 px-4 py-5 sm:p-6 dark:bg-gray-800">
               <div>
@@ -104,7 +105,7 @@ export default function EditProfile() {
                 </div>
                 <div className="mb-6">
                   <label htmlFor="username" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Username</label>
-                  <input type="text" id="username" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" disabled placeholder="Majortomate" />
+                  <input type="text" id="username" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" disabled defaultValue={currentUser ? currentUser.username : null} />
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -118,7 +119,7 @@ export default function EditProfile() {
                 </div>
                 <div className="mb-6">
                   <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your email</label>
-                  <input type="email" id="email" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" disabled placeholder="cajaberu18@gmail.com" />
+                  <input type="email" id="email" className="shadow-sm bg-gray-50 border border-gray-300 text-gray-400 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" disabled defaultValue={currentUser ? currentUser.email : null} />
                 </div>
               </div>
               <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
