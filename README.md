@@ -1,34 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![image](https://user-images.githubusercontent.com/56098988/192351305-26bfa229-1935-4184-a7e2-9880ae5169ad.png)
 
-## Getting Started
 
-First, run the development server:
+## Trip Budget
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+A trip could be way expensive if you don't know the costs or at least how much in reality you will like to spend. Be the master of your trip expenses and start budgeting your trip now.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Trip Budget is a platform to help you easily create budgets for your incoming trips and also share them to others.  
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Techs Used
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [https://tripbudget-mnc8.vercel.app/api/hello](https://tripbudget-mnc8.vercel.app/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+This project was built on a MERN stack:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- React, Express, MongoDB, Node.
+- Next.Js framework.
+- State Management with Redux Toolkit.
+- For styling Tailwind CSS and Chakra UI.
+- Headless CMS (Wordpress) via GraphQL for blog posts.
+- Web app has auto dark mode.
 
-## Learn More
+## Functionalities
 
-To learn more about Next.js, take a look at the following resources:
+- User can Register and Login.
+- User can create trips and inside them as many destinations they want.
+- User can add daily budget for acommodation, food, transportation, local transportation, souvenirs, enrtances, and others.
+- User can add travel photos to be shared to others users.
+- User can edit its personal profile.
+- User is able to see other users trips, also theirs profiles.
+- User is able to read posts for inspiration.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+![image](https://user-images.githubusercontent.com/56098988/192351451-229ad10b-9610-4d65-93aa-e26ef6c487d6.png)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Coming Functionalities
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- User will be able to add expenses to its trips during its travels.
+- User will be able to add destinations with autocomplete cities by Google Maps, and also be able to se a map with its trips.
+- User will be able to see blogs posts inside its profile related to the trips has created.
+- React Native App.
