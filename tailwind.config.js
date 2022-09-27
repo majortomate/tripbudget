@@ -10,8 +10,9 @@ module.exports = {
     extend: {
       colors: {
         'knowhere-dark-blue': '#051D40',
-        'knowhere-darker-blue': '#031938',
+        'knowhere-darker-blue': '#021228',
         'tripbudget-yellow': '#FFDE5A',
+        'tripbudget-darker-yellow': '#e5c649',
       },
     },
   },

@@ -3,12 +3,14 @@ import Head from 'next/head';
 import { useDispatch } from 'react-redux';
 import { setGetAllTripsState } from '../../features/trip/tripSlice';
 import LandingTripCard from '../../components/LandingTripCard';
+import NavbarOthers from '../../components/NavbarOthers';
 
 function Trips({ allTrips }) {
   const dispatch = useDispatch();
   dispatch(setGetAllTripsState(allTrips));
   return (
-    <div className="bg-white dark:bg-gray-800 grid grid-rows-2" id="findTrips">
+    <div className="bg-white dark:bg-gray-800" id="findTrips">
+      <NavbarOthers />
       <Head>
         <title>All Trips | TripBudget - Budget your trip like a pro</title>
         <meta name="description" content="Budget your trip like a pro" />

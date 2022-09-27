@@ -9,6 +9,7 @@ import axios from 'axios';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
+import NavbarOthers from '../../components/NavbarOthers';
 import TableTrip from '../../components/TableTrip';
 import { setGetSingleTripState, selectSingleTripState, setDeleteDestinationTripPage } from '../../features/trip/tripSlice';
 import setTime from '../../services/toLocalString';
@@ -36,10 +37,12 @@ function SingleTripPage({ data }) {
   }, [trip, dispatch]);
 
   return (
-    <div className="dark:bg-gray-900 relative gap-6 grid grid-rows-2">
+    <div className="dark:bg-gray-900 relative gap-6">
+      <NavbarOthers />
       {data
         ? (
           <>
+            {' '}
             <Head>
               <title>
                 {seoTitle}
@@ -76,7 +79,7 @@ function SingleTripPage({ data }) {
                   <h3 className="self-center ml-3 text-lg font-normal dark:text-white text-gray-600">
                     <strong>Total Days:</strong>
                     <br />
-                    { `${daysBetweenDates(new Date(data.tripDateFrom), new Date(data.tripDateTo))} days`}
+                    {`${daysBetweenDates(new Date(data.tripDateFrom), new Date(data.tripDateTo))} days`}
                   </h3>
                   <h3 className="self-center ml-3 text-lg font-normal dark:text-white text-gray-600">
                     <strong>Group Size:</strong>

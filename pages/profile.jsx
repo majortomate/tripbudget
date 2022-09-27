@@ -6,6 +6,7 @@ import Head from 'next/head';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
+import NavbarOthers from '../components/NavbarOthers';
 import TravelPhotos from '../components/TravelPhotos';
 import YourExpenses from '../components/YourExpenses';
 import CreateTrip from '../components/CreateTrip';
@@ -120,6 +121,7 @@ function Profile({ data, user, photos }) {
 
   return (
     <div className="dark:bg-gray-900 relative gap-6">
+      <NavbarOthers />
       <Head>
         <title>Profile | TripBudget - Budget your trip like a pro</title>
         <meta name="description" content="Profile page" />

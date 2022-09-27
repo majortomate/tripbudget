@@ -12,6 +12,7 @@ import { useDispatch } from 'react-redux';
 import { setSingleUserState } from '../../features/auth/authSlice';
 import setTime from '../../services/toLocalString';
 import { totalByDestination } from '../../services/calculateBudgets';
+import NavbarOthers from '../../components/NavbarOthers';
 
 function SingleTravelerPage({ data }) {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ function SingleTravelerPage({ data }) {
 
   return (
     <div className="dark:bg-gray-900 relative gap-6">
+      <NavbarOthers />
       {data
         ? (
           <>

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import NextLink from 'next/link';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import NavbarOthers from '../../components/NavbarOthers';
 import { verify } from '../../server/auth/local/auth.service';
 
 function AccountVerification() {
@@ -22,14 +23,15 @@ function AccountVerification() {
   }, [token]);
 
   return (
-
-    <div className="bg-white dark:bg-gray-900  grid grid-rows-2">
-      <Head>
-        <title>Account activated! | TripBudget - Budget your trip like a pro</title>
-        <meta name="description" content="Login page" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      { token
+    <>
+      <NavbarOthers />
+      <div className="bg-white dark:bg-gray-900  grid grid-rows-2">
+        <Head>
+          <title>Account activated! | TripBudget - Budget your trip like a pro</title>
+          <meta name="description" content="Login page" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        {token
         && (
           <div className=" my-20 mx-auto max-w-sm pt-16 pb-32 sm:static sm:px-6 lg:px-8 h-max flex flex-col justify-center items-center bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-700 dark:border-gray-700 p-10">
             <div className="lg:text-center">
@@ -44,7 +46,9 @@ function AccountVerification() {
             </div>
           </div>
         )}
-    </div>
+      </div>
+
+    </>
   );
 }
 

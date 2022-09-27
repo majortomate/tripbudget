@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import swal from 'sweetalert';
 import { register } from '../server/auth/local/auth.service';
 import { setRegisterState, selectUserState } from '../features/auth/authSlice';
+import NavbarOthers from '../components/NavbarOthers';
 
 function Register() {
   const [form, setForm] = useState({});
@@ -53,6 +54,7 @@ function Register() {
 
   return (
     <div className="bg-white dark:bg-gray-900">
+      <NavbarOthers />
       <Head>
         <title>Register | TripBudget - Budget your trip like a pro</title>
         <meta name="description" content="Register page" />

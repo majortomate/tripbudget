@@ -10,6 +10,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import TableTrip from '../../../components/TableTrip';
+import NavbarOthers from '../../../components/NavbarOthers';
 import { setGetSingleTripState, selectSingleTripState } from '../../../features/trip/tripSlice';
 import setTime from '../../../services/toLocalString';
 import { totalByDestination, daysBetweenDates } from '../../../services/calculateBudgets';
@@ -32,6 +33,7 @@ function SingleTripPage({ data }) {
 
   return (
     <div className="dark:bg-gray-900 relative gap-6">
+      <NavbarOthers />
       {data
         ? (
           <>
