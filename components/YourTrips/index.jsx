@@ -12,7 +12,7 @@ function YourTrips() {
   const allTripsCurrentUser = useSelector(selectAllTripsUserState);
 
   const handleDelete = async (key) => {
-    await axios.delete(`http://localhost:3000/api/trip/${key}`);
+    await axios.delete(`https://tripbudget-mnc8.vercel.app/api/trip/${key}`);
     dispatch(setSingleDeleteTripState(key));
   };
 
@@ -49,7 +49,7 @@ function YourTrips() {
                   {setTime(singleTrip.tripDateTo)}
                 </span>
                 <div className="flex mt-4 space-x-3 md:mt-6">
-                  <NextLink href={`http://localhost:3000/trips/${singleTrip._id}`} passHref>
+                  <NextLink href={`https://tripbudget-mnc8.vercel.app/trips/${singleTrip._id}`} passHref>
                     <a href="#" className="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white dark:text-black bg-knowhere-dark-blue rounded-lg hover:bg-knowhere-darker-blue dark:bg-tripbudget-yellow dark:hover:bg-tripbudget-darker-yellow">See details</a>
                   </NextLink>
                   <button onClick={() => handleDelete(singleTrip._id)} type="button" href="#" className="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700">

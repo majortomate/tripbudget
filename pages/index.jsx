@@ -27,7 +27,7 @@ export default function Home({ allTrips, posts }) {
         <meta property="og:title" content="TripBudget - Budget your trip like a pro" />
         <meta property="og:image" content="https://res.cloudinary.com/knowhere/image/upload/v1664142646/static/isotipo_tripbudget_bkc2f4.svg" />
         <meta property="og:description" content="A trip could be way expensive if you don't know the costs or at least how much in reality you will like to spend. Be the master of your trip expenses and start budgeting your trip now." />
-        <meta property="og:url" content="http://localhost:3000/" />
+        <meta property="og:url" content="https://tripbudget-mnc8.vercel.app/" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
@@ -44,7 +44,7 @@ export default function Home({ allTrips, posts }) {
 export async function getServerSideProps() {
   // Fetch data from external API
   const [tripRes, postsRes] = await Promise.all([
-    fetch('http://localhost:3000/api/trip'),
+    fetch('https://tripbudget-mnc8.vercel.app/api/trip'),
     fetch('https://wordpress-482900-2916415.cloudwaysapps.com/graphql', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

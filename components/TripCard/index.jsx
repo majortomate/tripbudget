@@ -24,7 +24,7 @@ function TripCard({ currentTrip, setHide }) {
     const tripId = currentTrip._id;
 
     setLoading(true);
-    const response = await axios.delete(`http://localhost:3000/api/trip/${tripId}`);
+    const response = await axios.delete(`https://tripbudget-mnc8.vercel.app/api/trip/${tripId}`);
     dispatch(setDeleteTripState(response.data));
     dispatch(setDeleteDestinationState(response.data));
     setHide(false);

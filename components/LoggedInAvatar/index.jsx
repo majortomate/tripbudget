@@ -37,7 +37,7 @@ function LoggedInAvatar() {
 
     const getUser = async () => {
       const id = profile?.profile._id;
-      const response = await axios(`http://localhost:3000/api/user/${id}`);
+      const response = await axios(`https://tripbudget-mnc8.vercel.app/api/user/${id}`);
       setCurrentUser(response.data);
     };
 

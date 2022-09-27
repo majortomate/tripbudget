@@ -244,9 +244,9 @@ function Profile({ data, user, photos }) {
 export async function getServerSideProps() {
   // Fetch data from external API
   const [tripRes, userRes, photosRes] = await Promise.all([
-    fetch('http://localhost:3000/api/trip'),
-    fetch('http://localhost:3000/api/user'),
-    fetch('http://localhost:3000/api/travelPhotos'),
+    fetch('https://tripbudget-mnc8.vercel.app/api/trip'),
+    fetch('https://tripbudget-mnc8.vercel.app/api/user'),
+    fetch('https://tripbudget-mnc8.vercel.app/api/travelPhotos'),
   ]);
   const [trips, user, photos] = await Promise.all([
     tripRes.json(),

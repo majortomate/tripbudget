@@ -23,13 +23,13 @@ function SingleTripPage({ data }) {
   const seoTitle = `${data.tripName} - Budget your trip like a pro`;
 
   const handleDelete = async (key) => {
-    await axios.delete(`http://localhost:3000/api/destination/${key}`);
+    await axios.delete(`https://tripbudget-mnc8.vercel.app/api/destination/${key}`);
     dispatch(setDeleteDestinationTripPage(key));
   };
 
   useEffect(() => {
     const fetchSingleTripData = async () => {
-      const response = await axios(`http://localhost:3000/api/trip/${trip}`);
+      const response = await axios(`https://tripbudget-mnc8.vercel.app/api/trip/${trip}`);
       dispatch(setGetSingleTripState(response.data));
     };
 
@@ -168,7 +168,7 @@ function SingleTripPage({ data }) {
 export async function getServerSideProps(context) {
   const { trip } = context.params;
   // Fetch data from external API
-  const response = await fetch(`http://localhost:3000/api/trip/${trip}`);
+  const response = await fetch(`https://tripbudget-mnc8.vercel.app/api/trip/${trip}`);
   const data = await response.json();
   // Pass data to the page via props
   return { props: { data } };
