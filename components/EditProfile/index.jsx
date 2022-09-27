@@ -19,7 +19,7 @@ export default function EditProfile() {
 
     const getUser = async () => {
       const id = profile?.profile._id;
-      const response = await axios(`https://tripbudget-mnc8.vercel.app/api/user/${id}`);
+      const response = await axios(`http://localhost:3000/api/user/${id}`);
       setCurrentUser(response.data);
     };
 
@@ -65,7 +65,7 @@ export default function EditProfile() {
     };
     const id = profile?.profile._id;
     setLoading(true);
-    await axios.patch(`https://tripbudget-mnc8.vercel.app/api/user/${id}`, data);
+    await axios.patch(`http://localhost:3000/api/user/${id}`, data);
     setForm({});
     setTimeout(() => {
       window.location.reload();

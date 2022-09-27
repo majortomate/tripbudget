@@ -25,7 +25,7 @@ function LandingTripCard() {
             <img className="mb-3 w-24 h-24 rounded-full shadow-lg" src="https://res.cloudinary.com/knowhere/image/upload/v1664142646/static/isotipo_tripbudget_bkc2f4.svg" alt="avatar" />
             <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{singleTrip.tripName}</h5>
             <div className="grid grid-cols-3 items-center justify-center justify-items-center">
-              <NextLink href={`https://tripbudget-mnc8.vercel.app/travelers/${singleTrip.user._id}`} passHref>
+              <NextLink href={`http://localhost:3000/travelers/${singleTrip.user._id}`} passHref>
                 <img className="mr-2 justify-self-end w-7 h-7 rounded-full right-10 top-5 col-span-1 cursor-pointer" src={singleTrip.user.avatar} alt="avatar" />
               </NextLink>
               <p className="text-sm text-gray-500 dark:text-gray-400 col-span-2">
@@ -54,7 +54,7 @@ function LandingTripCard() {
             </div>
           </div>
           <div className="flex mt-4 space-x-3 md:mt-6 justify-between">
-            <NextLink href={`https://tripbudget-mnc8.vercel.app/trips/public/${singleTrip._id}`} passHref>
+            <NextLink href={`http://localhost:3000/trips/public/${singleTrip._id}`} passHref>
               <a href="#" className="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-knowhere-dark-blue rounded-lg hover:bg-knowhere-darker-blue dark:bg-blue-600 dark:hover:bg-blue-700">See details</a>
             </NextLink>
             <SocialShare id={singleTrip._id} />

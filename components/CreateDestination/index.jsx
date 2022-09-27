@@ -41,7 +41,7 @@ function CreateDestination() {
       trip: currentTrip._id,
     };
     setLoading(true);
-    const response = await axios.post('https://tripbudget-mnc8.vercel.app/api/destination/', data);
+    const response = await axios.post('http://localhost:3000/api/destination/', data);
     dispatch(setCreateDestinationState(response.data));
     setLoading(false);
     setForm({});
