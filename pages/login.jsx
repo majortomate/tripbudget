@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 import swal from 'sweetalert';
 import { login } from '../server/auth/local/auth.service';
 import { setLoginState, selectUserState } from '../features/auth/authSlice';
+import NavbarOthers from '../components/NavbarOthers';
 
 function Login() {
   const [form, setForm] = useState({});
@@ -47,6 +48,7 @@ function Login() {
 
   return (
     <div className="bg-white dark:bg-gray-900">
+      <NavbarOthers />
       <Head>
         <title>Login | TripBudget - Budget your trip like a pro</title>
         <meta name="description" content="Login page" />

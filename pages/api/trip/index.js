@@ -1,8 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import connectDb from '../../../server/config/database';
 import Trip from '../../../server/trip/trip.model';
-import Destination from '../../../server/destination/destination.model';
-import User from '../../../server/user/user.model';
+import { getAllTrips } from '../../../server/trip/trip.service';
 import { getSingleUser, updateUser } from '../../../server/user/user.service';
 
 export default async (req, res) => {
@@ -11,7 +10,7 @@ export default async (req, res) => {
   switch (method) {
     case 'GET':
       try {
-        const trips = await Trip.find({}).sort([['createdAt', -1]]).populate([{ path: 'destinations', model: Destination }, { path: 'user', model: User }]);
+        const trips = await getAllTrips();
         return res.status(200).json({ trips });
       } catch (error) {
         return res.status(400).json({ msg: error.message });

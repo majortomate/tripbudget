@@ -2,7 +2,6 @@
 import { ChakraProvider } from '@chakra-ui/react';
 import { Provider } from 'react-redux';
 import Footer from '../components/Footer';
-import Navbar from '../components/Navbar';
 import { wrapper } from '../store';
 import './styles/globals.css';
 
@@ -11,7 +10,6 @@ function MyApp({ Component, ...rest }) {
   return (
     <Provider store={store}>
       <ChakraProvider>
-        <Navbar />
         <Component {...props.pageProps} />
         <Footer />
       </ChakraProvider>

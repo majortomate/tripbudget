@@ -22,7 +22,7 @@ This project was built on a MERN stack:
 
 - User can Register and Login.
 - User can create trips and inside them as many destinations they want.
-- User can add daily budget for acommodation, food, transportation, local transportation, souvenirs, enrtances, and others.
+- User can add daily budget for acommodation, food, transportation, local transportation, souvenirs, entrances, and others.
 - User can add travel photos to be shared to others users.
 - User can edit its personal profile.
 - User is able to see other users trips, also theirs profiles.

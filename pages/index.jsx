@@ -9,6 +9,7 @@ import SeeTrips from '../components/SeeTrips';
 import BlogPosts from '../components/BlogPosts';
 import PreFooter from '../components/PreFooter';
 import ScrollToTop from '../components/ScrollToTop';
+import Navbar from '../components/Navbar';
 import { setGetAllTripsState } from '../features/trip/tripSlice';
 import { setGetAllPostsState } from '../features/post/postSlice';
 
@@ -19,6 +20,7 @@ export default function Home({ allTrips, posts }) {
 
   return (
     <div className={styles.container}>
+      <Navbar />
       <Head>
         <title>TripBudget - Budget your trip like a pro</title>
         <meta name="description" content="Budget your trip like a pro" />

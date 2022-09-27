@@ -2,6 +2,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from 'react';
 import axios from 'axios';
+import swal from 'sweetalert';
 import { useSelector, useDispatch } from 'react-redux';
 import CreateDestination from '../CreateDestination';
 import DropdownOptions from '../DropdownOptions';
@@ -31,9 +32,15 @@ function TripCard({ currentTrip, setHide }) {
   };
 
   const handlePublish = () => {
-    alert('Trip successfully published');
-    setHide(false);
-    window.location.reload();
+    swal({
+      title: 'Wonderful!',
+      text: 'Trip successfully published',
+      icon: 'success',
+    });
+    setTimeout(() => {
+      setHide(false);
+      window.location.reload();
+    }, 1500);
   };
 
   const handleClick = () => {

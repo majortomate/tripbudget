@@ -50,7 +50,7 @@ function YourTrips() {
                 </span>
                 <div className="flex mt-4 space-x-3 md:mt-6">
                   <NextLink href={`https://tripbudget-mnc8.vercel.app/trips/${singleTrip._id}`} passHref>
-                    <a href="#" className="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700">See details</a>
+                    <a href="#" className="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white dark:text-black bg-knowhere-dark-blue rounded-lg hover:bg-knowhere-darker-blue dark:bg-tripbudget-yellow dark:hover:bg-tripbudget-darker-yellow">See details</a>
                   </NextLink>
                   <button onClick={() => handleDelete(singleTrip._id)} type="button" href="#" className="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-gray-900 bg-white rounded-lg border border-gray-300 hover:bg-gray-100 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-700">
                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-trash mr-2" width="20" height="20" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
