@@ -15,8 +15,9 @@ This project was built on a MERN stack:
 - Next.Js framework.
 - State Management with Redux Toolkit.
 - For styling Tailwind CSS and Chakra UI.
-- Headless CMS (Wordpress) via GraphQL for blog posts.
-- Web app has auto dark mode.
+- Headless CMS (Wordpress) via GraphQL for blog posts
+- Cloudinary API.
+
 
 ## Functionalities
 
@@ -27,6 +28,7 @@ This project was built on a MERN stack:
 - User can edit its personal profile.
 - User is able to see other users trips, also theirs profiles.
 - User is able to read posts for inspiration.
+- User can experience auto dark mode for the web app.
 
 ![image](https://user-images.githubusercontent.com/56098988/192351451-229ad10b-9610-4d65-93aa-e26ef6c487d6.png)
 

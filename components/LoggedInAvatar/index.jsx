@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import NextLink from 'next/link';
 import { logout } from '../../server/auth/local/auth.service';
 import { setLogoutState } from '../../features/auth/authSlice';
+import ThemeToggler from '../ThemeToggler';
 
 function LoggedInAvatar() {
   const [openDropdown, setOpenDropdown] = useState(false);
@@ -46,10 +47,12 @@ function LoggedInAvatar() {
   return (
 
     <>
-      <div className="flex flex-row w-48 justify-evenly">
+
+      <div className="flex flex-row w-48 justity-around items-center">
+        <ThemeToggler />
         {
   currentUser ? (
-    <h1 className="text-white text-md">
+    <h1 className="text-white text-md hidden md:block lg:block xl:block">
       Hi,
       {' '}
       {currentUser?.firstName}

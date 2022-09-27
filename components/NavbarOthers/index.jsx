@@ -29,6 +29,7 @@ import {
 } from '@chakra-ui/icons';
 import { selectUserState } from '../../features/auth/authSlice';
 import LoggedInAvatar from '../LoggedInAvatar';
+import ThemeToggler from '../ThemeToggler';
 
 const NAV_ITEMS = [
   {
@@ -115,6 +116,7 @@ export default function NavbarOthers() {
             ? <LoggedInAvatar />
             : (
               <>
+                <ThemeToggler />
                 <NextLink href="/login">
                   <Button
                     as="a"
