@@ -47,7 +47,7 @@ function LandingTripCard() {
                 {' '}
                 <span className="text-green-700 dark:text-green-600 font-bold">
                   $
-                  {(singleTrip.destinations.reduce((acc, prev) => acc + (totalByDestination(prev) / singleTrip.destinations.length), 0)).toLocaleString() }
+                  {Math.round((singleTrip.destinations.reduce((acc, prev) => acc + (totalByDestination(prev) / singleTrip.destinations.length), 0)).toLocaleString()) }
                 </span>
 
               </p>
@@ -55,7 +55,7 @@ function LandingTripCard() {
           </div>
           <div className="flex mt-4 space-x-3 md:mt-6 justify-between">
             <NextLink href={`https://tripbudget-mnc8.vercel.app/trips/public/${singleTrip._id}`} passHref>
-              <a href="#" className="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-knowhere-dark-blue rounded-lg hover:bg-knowhere-darker-blue dark:bg-blue-600 dark:hover:bg-blue-700">See details</a>
+              <a href="#" className="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-knowhere-dark-blue hover:bg-knowhere-dark-blue dark:bg-tripbudget-yellow dark:hover:bg-tripbudget-darker-yellow dark:text-black rounded-lg">See details</a>
             </NextLink>
             <SocialShare id={singleTrip._id} />
           </div>

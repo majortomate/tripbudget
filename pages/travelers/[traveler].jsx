@@ -198,7 +198,7 @@ function SingleTravelerPage({ data }) {
                         </div>
                         <div className="flex mt-4 space-x-3 md:mt-6 justify-between">
                           <NextLink href={`https://tripbudget-mnc8.vercel.app/trips/public/${trip._id}`} passHref>
-                            <a href="#" className="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white bg-knowhere-dark-blue rounded-lg hover:bg-knowhere-darker-blue dark:bg-blue-600 dark:hover:bg-blue-700">See details</a>
+                            <a href="#" className="inline-flex items-center py-2 px-4 text-sm font-medium text-center text-white rounded-lg bg-knowhere-dark-blue hover:bg-knowhere-dark-blue dark:bg-tripbudget-yellow dark:hover:bg-tripbudget-darker-yellow dark:text-black">See details</a>
                           </NextLink>
                         </div>
                       </div>

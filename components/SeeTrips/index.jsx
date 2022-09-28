@@ -20,7 +20,7 @@ export default function SeeTrips() {
           <NextLink href="https://tripbudget-mnc8.vercel.app/trips" passHref>
             <a
               href="#"
-              className="inline-block rounded-md border border-transparent bg-knowhere-dark-blue py-3 px-8 text-center font-medium dark:hover:text-white dark:text-black text-white hover:bg-knowhere-darker-blue dark:bg-tripbudget-yellow"
+              className="inline-block rounded-md border border-transparent bg-knowhere-dark-blue py-3 px-8 text-center font-medium dark:hover:text-black dark:text-black text-white hover:bg-knowhere-darker-blue dark:bg-tripbudget-yellow"
             >
               SEE MORE TRIPS
             </a>
