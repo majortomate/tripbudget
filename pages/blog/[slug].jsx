@@ -7,7 +7,7 @@ import NavbarOthers from '../../components/NavbarOthers';
 function SinglePost(data) {
   const seoTitle = `${data.post.title} - Budget your trip like a pro`;
   return (
-    <>
+    <div className="dark:bg-gray-900">
       <NavbarOthers />
       <div className="max-w-screen-xl mx-auto mt-20">
 
@@ -58,12 +58,12 @@ function SinglePost(data) {
 
           <div className="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed">
 
-            <article className="pb-6" dangerouslySetInnerHTML={{ __html: data.post.content }} />
+            <article className="pb-6 dark:text-gray-300" dangerouslySetInnerHTML={{ __html: data.post.content }} />
           </div>
         </main>
       </div>
 
-    </>
+    </div>
   );
 }
 

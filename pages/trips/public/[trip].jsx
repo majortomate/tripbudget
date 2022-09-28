@@ -92,7 +92,7 @@ function SingleTripPage({ data }) {
                     <br />
                     <span className="text-green-700 dark:text-green-600 font-bold">
                       $
-                      {currentTrip?.destinations ? (currentTrip?.destinations?.reduce((acc, prev) => acc + (totalByDestination(prev) / currentTrip.destinations.length), 0)).toLocaleString() : null}
+                      {currentTrip?.destinations ? Math.round((currentTrip?.destinations?.reduce((acc, prev) => acc + (totalByDestination(prev) / currentTrip.destinations.length), 0)).toLocaleString()) : null}
                     </span>
 
                   </h3>
