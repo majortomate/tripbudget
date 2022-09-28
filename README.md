@@ -1,4 +1,4 @@
-![image](https://user-images.githubusercontent.com/56098988/192351305-26bfa229-1935-4184-a7e2-9880ae5169ad.png)
+![image](https://user-images.githubusercontent.com/56098988/192664044-6d758681-c6fe-4550-ac3b-f74999a1a5e2.png)
 
 
 ## Trip Budget
@@ -19,7 +19,7 @@ This project was built on a MERN stack:
 - Cloudinary API.
 
 
-## Functionalities
+## Features
 
 - User can Register and Login.
 - User can create trips and inside them as many destinations they want.
@@ -28,12 +28,12 @@ This project was built on a MERN stack:
 - User can edit its personal profile.
 - User is able to see other users trips, also theirs profiles.
 - User is able to read posts for inspiration.
-- User can experience auto dark mode for the web app.
+- User can switch to dark mode (web also switches automatically at night).
 
 ![image](https://user-images.githubusercontent.com/56098988/192351451-229ad10b-9610-4d65-93aa-e26ef6c487d6.png)
 
 
-## Coming Functionalities
+## Coming Features
 
 - User will be able to add expenses to its trips during its travels.
 - User will be able to add destinations with autocomplete cities by Google Maps, and also be able to se a map with its trips.
