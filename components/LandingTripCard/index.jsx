@@ -47,7 +47,7 @@ function LandingTripCard() {
                 {' '}
                 <span className="text-green-700 dark:text-green-600 font-bold">
                   $
-                  {Math.round((singleTrip.destinations.reduce((acc, prev) => acc + (totalByDestination(prev) / singleTrip.destinations.length), 0)).toLocaleString()) }
+                  {Math.round((singleTrip.destinations.reduce((acc, prev) => acc + (totalByDestination(prev) / singleTrip.destinations.length), 0))) }
                 </span>
 
               </p>
